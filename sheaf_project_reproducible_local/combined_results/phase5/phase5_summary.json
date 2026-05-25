@@ -1,0 +1,98 @@
+{
+  "phase": 5,
+  "name": "Transport-Calibrated Sheaf Stability",
+  "n_tasks": 3,
+  "tasks": [
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "label_col": "idh_codel_subtype",
+      "is_binary": false,
+      "exclude_idh": true,
+      "exclude_grade": true,
+      "exclude_clusters": true,
+      "description": "IDH/codel subtype under strict no-IDH/no-grade/no-cluster features"
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "label_col": "grade_label",
+      "is_binary": false,
+      "exclude_idh": true,
+      "exclude_grade": true,
+      "exclude_clusters": true,
+      "description": "G2/G3/G4 grade under strict no-IDH/no-grade/no-cluster features"
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "label_col": "grade4_status",
+      "is_binary": true,
+      "exclude_idh": false,
+      "exclude_grade": true,
+      "exclude_clusters": true,
+      "description": "Grade 4 status under strict no-grade/no-cluster features"
+    }
+  ],
+  "mean_pairwise_transport_gap_by_task": [
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "sheaf_transport_gap": 4.4301279725352325
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "sheaf_transport_gap": 4.853034282735588
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "sheaf_transport_gap": 4.779507186477594
+    }
+  ],
+  "permutation_tests": [
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "observed_mean_pairwise_sheaf_transport_gap": 4.779507186477594,
+      "null_mean": 4.195569367741009,
+      "null_sd": 0.10012977773028851,
+      "z_score": 5.831809738734078,
+      "permutation_p_value_high_gap": 0.009900990099009901,
+      "n_permutations": 100
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "observed_mean_pairwise_sheaf_transport_gap": 4.853034282735588,
+      "null_mean": 4.114316335777127,
+      "null_sd": 0.07438843728620217,
+      "z_score": 9.930547864391464,
+      "permutation_p_value_high_gap": 0.009900990099009901,
+      "n_permutations": 100
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "observed_mean_pairwise_sheaf_transport_gap": 4.4301279725352325,
+      "null_mean": 3.6292022504579347,
+      "null_sd": 0.04213509227676161,
+      "z_score": 19.00851902276493,
+      "permutation_p_value_high_gap": 0.009900990099009901,
+      "n_permutations": 100
+    }
+  ],
+  "best_balanced_accuracy_delta": {
+    "task": "grade_label",
+    "protocol": "strict_no_idh_no_grade_no_clusters",
+    "method": "baseline_plus_phase5_transport_features",
+    "delta_accuracy": 0.011904761904761862,
+    "delta_balanced_accuracy": 0.00921459492888066,
+    "delta_macro_f1": 0.012553413470375308,
+    "delta_auroc": NaN,
+    "delta_auprc": NaN,
+    "delta_auroc_ovr_weighted": 0.0027684660377016446,
+    "delta_auroc_ovr_macro": 0.003153142712275736
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "cohort": {
+    "n_patients": 420,
+    "n_events": 318,
+    "n_censored": 102,
+    "median_os_months": 18.45,
+    "mean_os_months": 29.794047619047618,
+    "median_age": 54.5,
+    "events_fraction": 0.7571428571428571
+  },
+  "best_model": {
+    "model": "Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]",
+    "model_family": "phase2_edges",
+    "n": 420,
+    "events": 318,
+    "n_features": 10,
+    "log_likelihood": -1514.0050633817327,
+    "in_sample_c_index": 0.8065933787583273,
+    "regularized_fallback": false,
+    "cv_c_index": 0.79806985992553,
+    "cv_c_index_ci_low": NaN,
+    "cv_c_index_ci_high": NaN,
+    "mean_fold_c_index": 0.7977790919741732,
+    "std_fold_c_index": 0.01736615994035896
+  },
+  "clinical_molecular_cv_c_index": 0.7969806732693331,
+  "phase1_edge_cv_c_index": 0.7948529598014135,
+  "phase1_edge_delta_cv_c_index": -0.002127713467919623
+}

@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+
+\title{Phase 2 Sharpened Mathematics: Learned Sheaf Accuracy Validation}
+\author{Sheaf-Theoretic Multi-Omics Regulatory Inconsistency Project}
+\date{May 2026}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\SRIS}{\operatorname{SRIS}}
+\newcommand{\AUC}{\operatorname{AUROC}}
+\newcommand{\AUPRC}{\operatorname{AUPRC}}
+\newcommand{\Acc}{\operatorname{Acc}}
+\newcommand{\BAcc}{\operatorname{BAcc}}
+\newcommand{\Fone}{\operatorname{F1}}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Learned Three-Node Regulatory Sheaf}
+
+Let
+\[
+G=(V,E),\qquad V=\{D,R,C\},\qquad E=\{D\to R,\;D\to C,\;R\to C\}.
+\]
+For patient $p$, define node states
+\[
+x_D(p)\in\R^{d_D},\qquad x_R(p)\in\R^{d_R},\qquad x_C(p)\in\R^{d_C}.
+\]
+The Phase 2 learned sheaf assigns
+\[
+\F(D)=\R^{d_D},\qquad \F(R)=\R^{d_R},\qquad \F(C)=\R^{d_C},
+\]
+and for each edge $e:u\to v$ chooses edge stalk
+\[
+\F(e)=\R^{d_v}.
+\]
+The target-side restriction is fixed to the identity,
+\[
+\rho_{v,e}=I_{d_v},
+\]
+and the source-side restriction is learned,
+\[
+\rho_{u,e}=W_{uv}\in\R^{d_v\times d_u}.
+\]
+Therefore
+\[
+r_{uv}(p)=\rho_{u,e}x_u(p)-\rho_{v,e}x_v(p)=W_{uv}x_u(p)-x_v(p).
+\]
+
+\section{Learned Restriction Maps}
+
+For an unconstrained ridge sheaf,
+\[
+W_{uv}^{\star}
+=
+\arg\min_{W\in\R^{d_v\times d_u}}
+\sum_{p\in\mathcal T}
+\|Wx_u(p)-x_v(p)\|_2^2+\n\alpha\|W\|_F^2.
+\]
+Equivalently, if $X_u\in\R^{n\times d_u}$ and $X_v\in\R^{n\times d_v}$,
+\[
+W_{uv}^{\star}=X_v^{\top}X_u(X_u^{\top}X_u+\alpha I_{d_u})^{-1}.
+\]
+For the biologically constrained nonnegative sheaf, after risk-oriented feature encoding,
+\[
+W_{uv}^{\star}
+=
+\arg\min_{W\ge 0}
+\sum_{p\in\mathcal T}
+\|Wx_u(p)-x_v(p)\|_2^2+
+\alpha\|W\|_F^2.
+\]
+
+\section{Reference Sheaf}
+
+Let $\mathcal R\subseteq\mathcal P$ be a low-risk reference subset. In the current implementation,
+\[
+p\in\mathcal R
+\quad\Longleftarrow\quad
+\bigl(\text{IDHmut-codel}(p)=1\bigr)
+\;	ext{or}\;
+\bigl(\text{grade}(p)\le 2\text{ and IDH-mutant}(p)=1\bigr).
+\]
+Then
+\[
+W_{uv,\operatorname{ref}}^{\star}
+=
+\arg\min_W
+\sum_{p\in\mathcal R}
+\|Wx_u(p)-x_v(p)\|_2^2+
+\alpha\|W\|_F^2.
+\]
+All patients are scored by deviation from the reference law:
+\[
+r^{\operatorname{ref}}_{uv}(p)=W_{uv,\operatorname{ref}}^{\star}x_u(p)-x_v(p).
+\]
+
+\section{Edge Energies and Learned Sheaf Score}
+
+For each edge $u\to v$,
+\[
+E_{uv}(p)=\frac{1}{d_v}\|W_{uv}x_u(p)-x_v(p)\|_2^2.
+\]
+The Phase 2 learned sheaf regulatory inconsistency score is
+\[
+\SRIS_2(p)=E_{DR}(p)+E_{DC}(p)+E_{RC}(p).
+\]
+The fractional edge contribution is
+\[
+\phi_{uv}(p)=\frac{E_{uv}(p)}{E_{DR}(p)+E_{DC}(p)+E_{RC}(p)+\varepsilon}.
+\]
+
+\section{Coboundary and Laplacian}
+
+Stack
+\[
+x(p)=\begin{bmatrix}x_D(p)\\x_R(p)\\x_C(p)\end{bmatrix}.
+\]
+The learned coboundary is
+\[
+B_{\F}=\begin{bmatrix}
+W_{DR} & -I_{d_R} & 0\\
+W_{DC} & 0 & -I_{d_C}\\
+0 & W_{RC} & -I_{d_C}
+\end{bmatrix}.
+\]
+The sheaf Laplacian is
+\[
+L_{\F}=B_{\F}^{\top}B_{\F}.
+\]
+The unnormalized quadratic energy is
+\[
+\mathcal Q_{\F}(p)=x(p)^{\top}L_{\F}x(p)=\|B_{\F}x(p)\|_2^2.
+\]
+The implemented normalized score is
+\[
+\SRIS_2(p)=\sum_{u\to v}\frac{1}{d_v}\|r_{uv}(p)\|_2^2.
+\]
+
+\section{Out-of-Fold Accuracy Validation}
+
+For each endpoint $Y\in\{0,1\}$, a stratified $K$-fold partition is used:
+\[
+\mathcal P=\bigsqcup_{k=1}^{K}\mathcal P_k.
+\]
+The reported prediction for patient $p\in\mathcal P_k$ is
+\[
+\widehat q(p)=h_{-k}(z(p)),
+\]
+where $h_{-k}$ is trained on $\mathcal P\setminus\mathcal P_k$ and $z(p)$ is one of
+\[
+\begin{aligned}
+z_{\text{SRIS}}(p)&=[\SRIS_2(p)],\\
+z_{\text{edge}}(p)&=[E_{DR}(p),E_{DC}(p),E_{RC}(p)],\\
+z_{\text{full}}(p)&=[\SRIS_2(p),E_{DR}(p),E_{DC}(p),E_{RC}(p),\phi_{DR}(p),\phi_{DC}(p),\phi_{RC}(p)],\\
+z_{\text{base}+\text{full}}(p)&=[z_{\text{base}}(p),z_{\text{full}}(p)].
+\end{aligned}
+\]
+The hard label is
+\[
+\widehat y(p)=\mathbf 1\{\widehat q(p)\ge 1/2\}.
+\]
+
+\section{Accuracy Metrics}
+
+Let
+\[
+\operatorname{TP}=\sum_p\mathbf 1\{Y_p=1,\widehat y_p=1\},\quad
+\operatorname{TN}=\sum_p\mathbf 1\{Y_p=0,\widehat y_p=0\},
+\]
+\[
+\operatorname{FP}=\sum_p\mathbf 1\{Y_p=0,\widehat y_p=1\},\quad
+\operatorname{FN}=\sum_p\mathbf 1\{Y_p=1,\widehat y_p=0\}.
+\]
+Then
+\[
+\Acc=\frac{\operatorname{TP}+\operatorname{TN}}{\operatorname{TP}+\operatorname{TN}+\operatorname{FP}+\operatorname{FN}},
+\]
+\[
+\BAcc=\frac{1}{2}\left(
+\frac{\operatorname{TP}}{\operatorname{TP}+\operatorname{FN}}
++
+\frac{\operatorname{TN}}{\operatorname{TN}+\operatorname{FP}}
+\right),
+\]
+\[
+\operatorname{Precision}=\frac{\operatorname{TP}}{\operatorname{TP}+\operatorname{FP}},
+\qquad
+\operatorname{Recall}=\frac{\operatorname{TP}}{\operatorname{TP}+\operatorname{FN}},
+\]
+\[
+\Fone=\frac{2\operatorname{Precision}\operatorname{Recall}}{\operatorname{Precision}+\operatorname{Recall}}.
+\]
+The ranking metrics are
+\[
+\AUC=\Pr\{\widehat q(p^+) > \widehat q(p^-)\},
+\]
+where $p^+$ and $p^-$ are independent positive and negative examples, and
+\[
+\AUPRC=\int_0^1 \operatorname{Precision}(r)\,d\operatorname{Recall}(r).
+\]
+
+\section{Incremental Value}
+
+For a metric $M$,
+\[
+\Delta M(\text{sheaf};\text{baseline})
+=
+M(z_{\text{base}+\text{sheaf}})-M(z_{\text{base}}).
+\]
+For edge energies,
+\[
+\Delta M_{\text{edge}}
+=
+M([z_{\text{base}},E_{DR},E_{DC},E_{RC}])-M(z_{\text{base}}).
+\]
+For the full sheaf signature,
+\[
+\Delta M_{\text{full}}
+=
+M([z_{\text{base}},\SRIS_2,E_{DR},E_{DC},E_{RC},\phi_{DR},\phi_{DC},\phi_{RC}])-M(z_{\text{base}}).
+\]
+
+\section{Leakage-Controlled Endpoints}
+
+\[
+Y_{\operatorname{IDH}}(p)=\mathbf 1\{\text{IDH-mutant}(p)\}.
+\]
+For this endpoint,
+\[
+\text{IDH-derived features are removed from }x_D(p)\text{ and }z_{\text{base}}(p).
+\]
+
+\[
+Y_{G4}(p)=\mathbf 1\{\text{grade}(p)=4\}.
+\]
+For this endpoint,
+\[
+\text{grade-derived features are removed from }x_C(p)\text{ and }z_{\text{base}}(p).
+\]
+
+For 24-month death,
+\[
+Y_{24}(p)=
+\begin{cases}
+1,&\text{deceased}(p)=1\text{ and }T_p\le24,\\
+0,&T_p>24,\\
+\text{missing},&\text{deceased}(p)=0\text{ and }T_p\le24.
+\end{cases}
+\]
+
+\section{Strict No-Cluster Accuracy Summary}
+
+\begin{longtable}{p{2.7cm}p{3.0cm}p{3.3cm}rrrrr}
+\toprule
+Endpoint & Model & Predictor & Acc. & Bal. Acc. & F1 & AUROC & AUPRC\\
+\midrule
+\endfirsthead
+\toprule
+Endpoint & Model & Predictor & Acc. & Bal. Acc. & F1 & AUROC & AUPRC\\
+\midrule
+\endhead
+24-month death & reference bio constrained & strict baseline + SRIS & 0.852 & 0.846 & 0.874 & 0.903 & 0.890\\
+Grade 4 status & no-grade bio constrained & strict baseline + edge energies & 0.869 & 0.864 & 0.888 & 0.909 & 0.897\\
+IDH mutant status & no-IDH bio constrained & strict baseline + sheaf full & 0.940 & 0.943 & 0.923 & 0.987 & 0.976\\
+\bottomrule
+\end{longtable}
+
+\section{Strict No-Cluster Increment Summary}
+
+\begin{longtable}{p{3cm}p{3.1cm}p{3.4cm}rr}
+\toprule
+Endpoint & Model & Predictor & $\Delta\AUC$ & $\Delta\BAcc$\\
+\midrule
+\endfirsthead
+\toprule
+Endpoint & Model & Predictor & $\Delta\AUC$ & $\Delta\BAcc$\\
+\midrule
+\endhead
+24-month death & reference bio constrained & strict baseline + SRIS & $-0.0014$ & $+0.0013$\\
+Grade 4 status & no-grade bio constrained & strict baseline + edge energies & $+0.0196$ & $+0.0102$\\
+IDH mutant status & no-IDH bio constrained & strict baseline + sheaf full & $+0.0025$ & $+0.0121$\\
+\bottomrule
+\end{longtable}
+
+\section{Interpretive Inequalities}
+
+For the current Phase 2 run,
+\[
+\Delta\AUC_{G4,\text{edge}}>0,
+\qquad
+\Delta\BAcc_{G4,\text{edge}}>0,
+\]
+with
+\[
+\Delta\AUC_{G4,\text{edge}}=0.0195685,
+\qquad
+\Delta\BAcc_{G4,\text{edge}}=0.0102041.
+\]
+For IDH status,
+\[
+\Delta\AUC_{\operatorname{IDH},\text{full}}=0.0024524,
+\qquad
+\Delta\BAcc_{\operatorname{IDH},\text{full}}=0.0120921.
+\]
+For the 24-month endpoint,
+\[
+\Delta\AUC_{24,\text{SRIS}}=-0.0013562,
+\qquad
+\Delta\BAcc_{24,\text{SRIS}}=0.0012743.
+\]
+Thus the current binary survival endpoint satisfies
+\[
+|\Delta\AUC_{24,\text{SRIS}}|\ll \Delta\AUC_{G4,\text{edge}},
+\]
+so Phase 3 should replace $Y_{24}$ by a time-to-event target
+\[
+(T_p,\delta_p)
+\]
+and evaluate
+\[
+C\text{-index},\qquad
+\operatorname{HR}(\SRIS_2),\qquad
+p\text{-value}(\beta_{\SRIS}).
+\]
+
+\end{document}

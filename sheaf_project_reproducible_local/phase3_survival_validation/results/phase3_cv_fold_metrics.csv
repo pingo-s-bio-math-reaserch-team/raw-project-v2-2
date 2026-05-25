@@ -1,0 +1,71 @@
+fold,n_test,events_test,fold_c_index,regularized_fallback,model
+0,84,63,0.8106982703395259,False,Clinical
+1,84,63,0.7865097041043589,False,Clinical
+2,84,64,0.7913348200063715,False,Clinical
+3,84,64,0.7992448080553808,False,Clinical
+4,84,64,0.7640594699418228,False,Clinical
+0,84,63,0.8171044202434337,False,Clinical + molecular
+1,84,63,0.7906458797327395,False,Clinical + molecular
+2,84,64,0.7945205479452054,False,Clinical + molecular
+3,84,64,0.8071113908118314,False,Clinical + molecular
+4,84,64,0.7815126050420168,False,Clinical + molecular
+0,84,63,0.824791800128123,False,Clinical + molecular + Phase1 SRIS
+1,84,63,0.7928730512249443,False,Clinical + molecular + Phase1 SRIS
+2,84,64,0.7967505575023893,False,Clinical + molecular + Phase1 SRIS
+3,84,64,0.8099433606041535,False,Clinical + molecular + Phase1 SRIS
+4,84,64,0.773109243697479,False,Clinical + molecular + Phase1 SRIS
+0,84,63,0.8228699551569507,False,Clinical + molecular + Phase1 edges
+1,84,63,0.791282214444798,False,Clinical + molecular + Phase1 edges
+2,84,64,0.797387703090156,False,Clinical + molecular + Phase1 edges
+3,84,64,0.8086847073631215,False,Clinical + molecular + Phase1 edges
+4,84,64,0.7669683257918553,False,Clinical + molecular + Phase1 edges
+0,84,63,0.8228699551569507,False,Clinical + molecular + Phase1 SRIS+edges
+1,84,63,0.791282214444798,False,Clinical + molecular + Phase1 SRIS+edges
+2,84,64,0.797387703090156,False,Clinical + molecular + Phase1 SRIS+edges
+3,84,64,0.8086847073631215,False,Clinical + molecular + Phase1 SRIS+edges
+4,84,64,0.7669683257918553,False,Clinical + molecular + Phase1 SRIS+edges
+0,84,63,0.8193465727098014,False,No-grade baseline
+1,84,63,0.77728285077951,False,No-grade baseline
+2,84,64,0.7903791016247212,False,No-grade baseline
+3,84,64,0.8001887979861548,False,No-grade baseline
+4,84,64,0.7850678733031674,False,No-grade baseline
+0,84,63,0.8241511851377322,False,No-grade + Phase1 edges
+1,84,63,0.7747375119312758,False,No-grade + Phase1 edges
+2,84,64,0.7862376553042371,False,No-grade + Phase1 edges
+3,84,64,0.8008181246066709,False,No-grade + Phase1 edges
+4,84,64,0.7766645119586296,False,No-grade + Phase1 edges
+0,84,63,0.8100576553491352,False,No-IDH baseline
+1,84,63,0.7890550429525931,False,No-IDH baseline
+2,84,64,0.7951576935329723,False,No-IDH baseline
+3,84,64,0.7998741346758967,False,No-IDH baseline
+4,84,64,0.7653522947640594,False,No-IDH baseline
+0,84,63,0.8087764253683536,False,No-IDH + Phase1 edges
+1,84,63,0.7865097041043589,False,No-IDH + Phase1 edges
+2,84,64,0.8024848677922906,False,No-IDH + Phase1 edges
+3,84,64,0.7992448080553808,False,No-IDH + Phase1 edges
+4,84,64,0.7482223658694247,False,No-IDH + Phase1 edges
+0,84,63,0.8071748878923767,False,Strict no-grade/no-IDH baseline
+1,84,63,0.751511294941139,False,Strict no-grade/no-IDH baseline
+2,84,64,0.7942019751513221,False,Strict no-grade/no-IDH baseline
+3,84,64,0.7879169288860919,False,Strict no-grade/no-IDH baseline
+4,84,64,0.7436974789915967,False,Strict no-grade/no-IDH baseline
+0,84,63,0.7988468930172966,False,Strict no-grade/no-IDH + Phase1 edges
+1,84,63,0.7556474705695195,False,Strict no-grade/no-IDH + Phase1 edges
+2,84,64,0.7897419560369544,False,Strict no-grade/no-IDH + Phase1 edges
+3,84,64,0.7794210195091252,False,Strict no-grade/no-IDH + Phase1 edges
+4,84,64,0.7372333548804137,False,Strict no-grade/no-IDH + Phase1 edges
+0,84,63,0.8203074951953876,False,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]
+1,84,63,0.7935093859370028,False,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]
+2,84,64,0.7970691302962727,False,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]
+3,84,64,0.8052234109502832,False,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]
+4,84,64,0.7727860374919199,False,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk]
+0,84,63,0.8122998078155029,False,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk]
+1,84,63,0.7938275532930321,False,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk]
+2,84,64,0.7938834023574387,False,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk]
+3,84,64,0.801762114537445,False,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk]
+4,84,64,0.781835811247576,False,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk]
+0,84,63,0.816463805253043,False,Clinical + molecular + Phase2 edges [identity_projection]
+1,84,63,0.7881005408845052,False,Clinical + molecular + Phase2 edges [identity_projection]
+2,84,64,0.7913348200063715,False,Clinical + molecular + Phase2 edges [identity_projection]
+3,84,64,0.8014474512271869,False,Clinical + molecular + Phase2 edges [identity_projection]
+4,84,64,0.7760180995475113,False,Clinical + molecular + Phase2 edges [identity_projection]

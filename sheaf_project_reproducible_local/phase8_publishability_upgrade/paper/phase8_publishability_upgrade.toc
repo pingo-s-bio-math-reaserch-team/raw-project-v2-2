@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Why Phase 8 Exists}{2}{section.1}%
+\contentsline {section}{\numberline {2}Core Method to Preserve}{2}{section.2}%
+\contentsline {section}{\numberline {3}Phase 8 Locked Internal Audit}{2}{section.3}%
+\contentsline {section}{\numberline {4}External Validation Protocol}{4}{section.4}%
+\contentsline {section}{\numberline {5}Gene/Pathway-Level Regulatory Sheaf}{4}{section.5}%
+\contentsline {section}{\numberline {6}Benchmark Requirements}{4}{section.6}%
+\contentsline {section}{\numberline {7}Manuscript-Safe Claims}{5}{section.7}%
+\contentsline {section}{\numberline {8}What Must Happen Before Submission}{5}{section.8}%

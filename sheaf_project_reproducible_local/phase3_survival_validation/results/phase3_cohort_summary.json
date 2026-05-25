@@ -1,0 +1,9 @@
+{
+  "n_patients": 420,
+  "n_events": 318,
+  "n_censored": 102,
+  "median_os_months": 18.45,
+  "mean_os_months": 29.794047619047618,
+  "median_age": 54.5,
+  "events_fraction": 0.7571428571428571
+}

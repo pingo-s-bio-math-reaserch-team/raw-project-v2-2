@@ -1,0 +1,233 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,booktabs,longtable,array,hyperref,xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\title{Phase 3 Mathematics-Only Specification: Survival Validation of Sheaf Regulatory Inconsistency}
+\author{Sheaf-Theoretic Multi-Omics Brain Tumor Project}
+\date{May 2026}
+\begin{document}
+\maketitle
+
+\section*{Data and Endpoint}
+Let $i\in\{1,\ldots,n\}$ index patients. The observed time is
+\[
+T_i=\min(T_i^\ast,C_i)\in \mathbb{R}_{>0},
+\]
+where $T_i^\ast$ is the death time and $C_i$ is the censoring time. The event indicator is
+\[
+\delta_i=\mathbf{1}\{T_i^\ast\le C_i\}.
+\]
+For the current internal cohort,
+\[
+ n=420,\qquad \sum_i\delta_i=318,\qquad \operatorname{median}(T_i)=18.45\text{ months}.
+\]
+Age is not included in the sheaf energy. It is only an adjustment covariate.
+
+\section{Phase 1 and Phase 2 Sheaf Predictors}
+The Phase 1 sheaf has node stalks
+\[
+D=\text{genomic state},\qquad R=\text{regulatory state},\qquad C=\text{tumor phenotype state}.
+\]
+The edge residuals are
+\[
+r_{DR}(i)=A_{DR}x_D(i)-B_{DR}x_R(i),
+\]
+\[
+r_{DC}(i)=A_{DC}x_D(i)-B_{DC}x_C(i),
+\]
+\[
+r_{RC}(i)=A_{RC}x_R(i)-B_{RC}x_C(i).
+\]
+The Phase 1 edge energies are
+\[
+E_{DR}(i)=\|r_{DR}(i)\|_2^2,\quad
+E_{DC}(i)=\|r_{DC}(i)\|_2^2,\quad
+E_{RC}(i)=\|r_{RC}(i)\|_2^2,
+\]
+and the total score is
+\[
+\operatorname{SRIS}_1(i)=E_{DR}(i)+E_{DC}(i)+E_{RC}(i).
+\]
+For learned Phase 2 maps, the edge residual is
+\[
+r_{uv}^{(2)}(i)=W_{uv}x_u(i)-x_v(i),
+\]
+and the learned sheaf score is
+\[
+\operatorname{SRIS}_2(i)=\sum_{u\to v}\frac{1}{d_v}\|W_{uv}x_u(i)-x_v(i)\|_2^2.
+\]
+
+\section{Cox Partial Likelihood}
+For a model feature vector $z_i\in\mathbb{R}^p$, define
+\[
+\eta_i=\beta^\top z_i,
+\qquad
+h(t\mid z_i)=h_0(t)\exp(\eta_i).
+\]
+The partial likelihood is
+\[
+L(\beta)=\prod_{i:\delta_i=1}\frac{\exp(\beta^\top z_i)}{\sum_{j:T_j\ge T_i}\exp(\beta^\top z_j)}.
+\]
+Equivalently,
+\[
+\ell(\beta)=\sum_{i:\delta_i=1}\left(\beta^\top z_i-\log\sum_{j:T_j\ge T_i}\exp(\beta^\top z_j)\right).
+\]
+All reported hazard ratios use standardized covariates:
+\[
+\widetilde z_{ik}=\frac{z_{ik}-\mu_k}{\sigma_k},
+\qquad
+\operatorname{HR}_k=\exp(\beta_k).
+\]
+
+\section{Adjustment Models}
+The clinical baseline is
+\[
+\eta_i=\beta_a\operatorname{Age}_i+\beta_g\operatorname{Grade}_i+
+\beta_p\operatorname{PurityLow}_i+\beta_k\operatorname{KPSLow}_i.
+\]
+The molecular baseline is
+\[
+\eta_i=\eta_i^{\text{clinical}}+\beta_I\operatorname{IDH}_i+\beta_M\operatorname{MGMT}_i+\beta_E\operatorname{EGFR}_i.
+\]
+The interpretable Phase 1 edge model is
+\[
+\eta_i=\eta_i^{\text{molecular}}+
+\gamma_{DR}E_{DR}(i)+\gamma_{DC}E_{DC}(i)+\gamma_{RC}E_{RC}(i).
+\]
+The reference learned-sheaf model is
+\[
+\eta_i=\eta_i^{\text{molecular}}+
+\alpha_{DR}E^{(2)}_{DR}(i)+\alpha_{DC}E^{(2)}_{DC}(i)+\alpha_{RC}E^{(2)}_{RC}(i),
+\]
+where the Phase 2 maps are fit from a low-risk reference subset.
+
+\section{Out-of-Fold Concordance}
+Five-fold out-of-fold risk scores $\widehat\eta_i$ are computed by fitting the Cox model on the training folds and evaluating on the held-out fold. Harrell concordance is
+\[
+\widehat C=
+\frac{
+\sum_{i,j}\mathbf{1}\{T_i<T_j,\delta_i=1\}
+\left[\mathbf{1}\{\widehat\eta_i>\widehat\eta_j\}+\frac12\mathbf{1}\{\widehat\eta_i=\widehat\eta_j\}\right]
+}{
+\sum_{i,j}\mathbf{1}\{T_i<T_j,\delta_i=1\}
+}.
+\]
+Higher $\widehat\eta_i$ indicates larger estimated hazard.
+
+\section{Likelihood-Ratio Improvement}
+For nested models $\mathcal{M}_0\subset\mathcal{M}_1$,
+\[
+\Lambda=2\{\ell(\widehat\beta_1)-\ell(\widehat\beta_0)\}
+\sim\chi^2_{p_1-p_0}.
+\]
+This tests whether sheaf terms add in-sample partial-likelihood signal beyond the matched baseline. Cross-validated concordance is separately reported to test predictive value.
+
+\section{Time-Horizon Accuracy}
+For horizon $\tau\in\{24,60\}$ months,
+\[
+Y_i(\tau)=\mathbf{1}\{T_i\le \tau,\delta_i=1\}.
+\]
+Patients censored before $\tau$ are removed from horizon classification. The out-of-fold risk score $\widehat\eta_i$ is evaluated by AUROC, AUPRC, balanced accuracy, and F1.
+
+\section{Internal Survival Discrimination}
+\begin{longtable}{p{0.55\textwidth}rrrr}
+\toprule
+Model & $n$ & Events & Features & OOF $C$\\
+\midrule
+Clinical + molecular + Phase2 edges [reference\_bio\_constrained\_lowrisk] & 420 & 318 & 10 & 0.7981\\
+Clinical + molecular + Phase2 edges [reference\_ridge\_lowrisk] & 420 & 318 & 10 & 0.7976\\
+Clinical + molecular & 420 & 318 & 7 & 0.7970\\
+Clinical + molecular + Phase1 SRIS & 420 & 318 & 8 & 0.7966\\
+Clinical + molecular + Phase1 edges & 420 & 318 & 10 & 0.7955\\
+Clinical + molecular + Phase1 SRIS+edges & 420 & 318 & 11 & 0.7938\\
+No-grade baseline & 420 & 318 & 6 & 0.7938\\
+Clinical + molecular + Phase2 edges [identity\_projection] & 420 & 318 & 10 & 0.7937\\
+No-grade + Phase1 edges & 420 & 318 & 9 & 0.7901\\
+No-IDH baseline & 420 & 318 & 6 & 0.7898\\
+\bottomrule
+\end{longtable}
+
+\section{Adjusted Hazard Ratios for Phase 1 Edge Model}
+\begin{longtable}{p{0.32\textwidth}rrrr}
+\toprule
+Feature & $\beta$ & HR & HR 95\% CI & $p$\\
+\midrule
+age & 0.6333 & 1.8839 & [1.5978, 2.2212] & 0.0000\\
+grade & 0.4597 & 1.5836 & [1.2986, 1.9311] & 0.0000\\
+idh\_mutant & -0.3892 & 0.6776 & [0.5521, 0.8317] & 0.0002\\
+mgmt\_methylated & -0.0722 & 0.9303 & [0.8223, 1.0526] & 0.2515\\
+egfr\_amp & -0.0081 & 0.9920 & [0.8718, 1.1287] & 0.9024\\
+P1\_E\_D\_to\_R & 0.0467 & 1.0478 & [0.9311, 1.1791] & 0.4382\\
+P1\_E\_D\_to\_C & 0.0707 & 1.0733 & [0.9468, 1.2167] & 0.2688\\
+P1\_E\_R\_to\_C & 0.1478 & 1.1593 & [1.0218, 1.3153] & 0.0218\\
+\bottomrule
+\end{longtable}
+
+\section{Nested Likelihood-Ratio Tests}
+\begin{longtable}{p{0.35\textwidth}p{0.35\textwidth}rrr}
+\toprule
+Base model & Full model & $\Lambda$ & df & $p$\\
+\midrule
+Clinical + molecular & Clinical + molecular + Phase1 SRIS & 10.8986 & 1 & 0.0010\\
+Clinical + molecular & Clinical + molecular + Phase1 edges & 11.6021 & 3 & 0.0089\\
+Clinical + molecular & Clinical + molecular + Phase1 SRIS+edges & 11.6021 & 4 & 0.0206\\
+No-grade baseline & No-grade + Phase1 edges & 6.1316 & 3 & 0.1054\\
+No-IDH baseline & No-IDH + Phase1 edges & 13.5399 & 3 & 0.0036\\
+Strict no-grade/no-IDH baseline & Strict no-grade/no-IDH + Phase1 edges & 15.6090 & 3 & 0.0014\\
+Clinical + molecular & Clinical + molecular + Phase2 edges [reference\_bio\_constrained\_lowrisk] & 9.3707 & 3 & 0.0247\\
+Clinical + molecular & Clinical + molecular + Phase2 edges [reference\_ridge\_lowrisk] & 6.6662 & 3 & 0.0833\\
+Clinical + molecular & Clinical + molecular + Phase2 edges [identity\_projection] & 1.2013 & 3 & 0.7527\\
+\bottomrule
+\end{longtable}
+
+\section{Time-Horizon Accuracy}
+\begin{longtable}{p{0.47\textwidth}rrrr}
+\toprule
+Model & Horizon & AUROC & AUPRC & Balanced Acc.\\
+\midrule
+Clinical + molecular & 24 & 0.9255 & 0.9295 & 0.8341\\
+Clinical + molecular & 60 & 0.9350 & 0.9847 & 0.7813\\
+Clinical + molecular + Phase1 SRIS & 24 & 0.9285 & 0.9338 & 0.8439\\
+Clinical + molecular + Phase1 SRIS & 60 & 0.9425 & 0.9872 & 0.7913\\
+Clinical + molecular + Phase1 edges & 24 & 0.9272 & 0.9318 & 0.8390\\
+Clinical + molecular + Phase1 edges & 60 & 0.9421 & 0.9871 & 0.7813\\
+Strict no-grade/no-IDH baseline & 24 & 0.9007 & 0.9209 & 0.8243\\
+Strict no-grade/no-IDH baseline & 60 & 0.9098 & 0.9798 & 0.7813\\
+Strict no-grade/no-IDH + Phase1 edges & 24 & 0.9016 & 0.9243 & 0.8145\\
+Strict no-grade/no-IDH + Phase1 edges & 60 & 0.9191 & 0.9828 & 0.7813\\
+Clinical + molecular + Phase2 edges [reference\_bio\_constrained\_lowrisk] & 24 & 0.9220 & 0.9244 & 0.8341\\
+Clinical + molecular + Phase2 edges [reference\_bio\_constrained\_lowrisk] & 60 & 0.9390 & 0.9862 & 0.7913\\
+\bottomrule
+\end{longtable}
+
+\section{Age-Separation Diagnostic}
+Because age is not part of the sheaf energy, the age diagnostic is computed externally. In the current run,
+\[
+\rho_S(\operatorname{SRIS}_1,\operatorname{Age})=0.0920,
+\qquad p=0.0597.
+\]
+This supports the intended design: age is not a direct component of inconsistency, but it remains available for adjustment.
+
+\section{Main Internal Conclusion}
+The strongest internal survival discriminator is
+\[
+\text{Clinical + molecular + Phase2 edges [reference\_bio\_constrained\_lowrisk]},
+\]
+with
+\[
+\widehat C_{\mathrm{OOF}}=0.7981.
+\]
+The clinical+molecular baseline has
+\[
+\widehat C_{\mathrm{OOF}}=0.7970.
+\]
+The reference learned-sheaf edge model therefore changes out-of-fold concordance by
+\[
+\Delta \widehat C = 0.0011.
+\]
+The Phase 1 edge residuals are significant in nested partial-likelihood tests, but their out-of-fold C-index increment is not positive in this internal run. Therefore the correct manuscript claim is not that Phase 1 edges already beat the baseline, but that the learned reference-sheaf residuals give a small internal survival-discrimination improvement and the Phase 1 terms provide interpretable hazard-associated residual components. External validation remains required.
+
+\end{document}

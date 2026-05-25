@@ -1,0 +1,14 @@
+task,metric,best_model,baseline_value,best_value,delta,n_test
+grade4_status,balanced_accuracy,baseline_plus_phase1_sris_edges,0.8839418777943369,0.9003353204172876,0.016393442622950727,105
+grade4_status,macro_f1,baseline_plus_phase1_sris_edges,0.8750572082379863,0.8938516680452164,0.018794459807230157,105
+grade4_status,accuracy,baseline_plus_phase1_sris_edges,0.8761904761904762,0.8952380952380953,0.01904761904761909,105
+grade4_status,auroc,baseline_plus_phase1_sris_edges,0.9549180327868853,0.9821162444113264,0.027198211624441138,105
+grade4_status,auprc,baseline_plus_phase1_sris_edges,0.9663649536768555,0.9878677650089546,0.02150281133209908,105
+grade_label,balanced_accuracy,baseline_plus_all_sheaf,0.5613459879206212,0.7650618349151568,0.2037158469945356,105
+grade_label,macro_f1,baseline_plus_all_sheaf,0.5470929640566133,0.7714695340501793,0.22437656999356592,105
+grade_label,accuracy,baseline_plus_all_sheaf,0.6571428571428571,0.8476190476190476,0.19047619047619047,105
+grade_label,auroc,baseline_plus_all_sheaf,0.8249677841538305,0.9411756266988826,0.11620784254505201,105
+idh_codel_subtype,balanced_accuracy,baseline_clinical_molecular_strict,0.8895970695970696,0.8895970695970696,0.0,104
+idh_codel_subtype,macro_f1,baseline_clinical_molecular_strict,0.8879210028816328,0.8879210028816328,0.0,104
+idh_codel_subtype,accuracy,baseline_clinical_molecular_strict,0.9134615384615384,0.9134615384615384,0.0,104
+idh_codel_subtype,auroc,baseline_plus_phase6_consensus_index,0.9801279970705482,0.9826612030725954,0.002533206002047206,104

@@ -1,0 +1,7 @@
+module,required_file,minimum_columns,purpose
+CGGA external validation,cgga_clinical.csv,"sample_id, age, grade, idh_status, survival_months, vital_status",external survival/subtype/grade validation
+CGGA expression,cgga_expression_gene_level.csv,gene symbols as rows or columns; samples matched to clinical,gene/pathway sheaf regulatory node
+CGGA methylation,cgga_methylation_gene_level.csv,gene symbols as rows or columns; samples matched to clinical,methylation-expression residuals
+CGGA miRNA optional,cgga_mirna.csv,miRNA IDs and samples,miRNA-target residuals
+Regulatory edges,regulatory_edges.csv,"source,target,edge_type,sign,pathway",gene/pathway-level sheaf construction
+Pathway membership,pathway_membership.csv,"pathway,gene",pathway-local SRIS

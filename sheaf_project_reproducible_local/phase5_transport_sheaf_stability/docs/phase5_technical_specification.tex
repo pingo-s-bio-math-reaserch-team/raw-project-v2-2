@@ -1,0 +1,161 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsfonts, bm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{caption}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+\title{Phase 5 Technical Specification: Transport-Calibrated Sheaf Stability for Glioma Multi-Omics}
+\author{Sheaf-Theoretic Multi-Omics Regulatory Inconsistency Project}
+\date{May 23, 2026}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Purpose of Phase 5}
+Phases 1--4 constructed patient-level sheaf residual energies and group-specific counterfactual sheaf Laplacians.  Phase 5 adds a robustness layer: it asks whether the learned sheaf residual signatures remain stable when patient distributions are transported between biological groups.  This turns the method from a purely predictive or residual-scoring framework into a distributional geometry framework.
+
+The central contribution is a \emph{transport-calibrated sheaf stability} analysis.  Instead of only asking whether two group-specific Laplacians differ, we also ask whether patients from one group can be transported to patients from another group while preserving sheaf residual structure.  This is designed to be different from standard multi-omics graph aggregation: the transported object is not merely a feature vector, but a sheaf-derived regulatory inconsistency signature.
+
+\section{Inputs from Previous Phases}
+For each patient $p$, Phase 1 gives a sheaf regulatory inconsistency score
+\begin{equation}
+\operatorname{SRIS}(p)=x_p^{\top}L_{\mathcal F}x_p,
+\end{equation}
+with edge energies
+\begin{equation}
+E_{D\to R}(p),\qquad E_{D\to C}(p),\qquad E_{R\to C}(p).
+\end{equation}
+Phase 4 gives group-specific counterfactual sheaf energies
+\begin{equation}
+E_g(p)=x_p^{\top}L_gx_p,
+\end{equation}
+where $g$ ranges over subtype or grade groups.  Phase 5 combines these into a patient sheaf signature
+\begin{equation}
+\bm{s}(p)=\left[\operatorname{SRIS}(p),E_{D\to R}(p),E_{D\to C}(p),E_{R\to C}(p),\{E_g(p)\}_{g\in\mathcal G}\right].
+\end{equation}
+
+\section{Pairwise Transport Between Biological Groups}
+Let $A$ and $B$ be two biological groups, such as $\mathrm{IDHwt}$ and $\mathrm{IDHmut\text{-}codel}$, or $G2$ and $G4$.  Let
+\begin{equation}
+\{p_i\}_{i=1}^{n_A}\subset A,
+\qquad
+\{q_j\}_{j=1}^{n_B}\subset B.
+\end{equation}
+We define two distances: a strict biological feature distance and a sheaf-signature distance.
+
+\subsection{Strict biological feature distance}
+Let $\bm{z}(p)$ be a leakage-controlled feature vector.  Age and survival are excluded from the transport state, and task labels such as IDH or grade are removed under the corresponding strict protocol.  The biological distance is
+\begin{equation}
+C^{\mathrm{bio}}_{ij}=\|\bm{z}(p_i)-\bm{z}(q_j)\|_2.
+\end{equation}
+
+\subsection{Sheaf-signature distance}
+The sheaf distance is
+\begin{equation}
+C^{\mathrm{sheaf}}_{ij}=\|\bm{s}(p_i)-\bm{s}(q_j)\|_2.
+\end{equation}
+Both distances are median-normalized, then combined:
+\begin{equation}
+C_{ij}=0.60\,\widetilde C^{\mathrm{bio}}_{ij}+0.40\,\widetilde C^{\mathrm{sheaf}}_{ij}.
+\end{equation}
+
+\section{Entropic Optimal Transport Plan}
+For uniform marginals $a_i=1/n_A$ and $b_j=1/n_B$, the transport plan is
+\begin{equation}
+\Gamma_{A\to B}^{\star}=\arg\min_{\Gamma\in U(a,b)}
+\sum_{i,j}\Gamma_{ij}C_{ij}
++\varepsilon\sum_{i,j}\Gamma_{ij}\log \Gamma_{ij},
+\end{equation}
+where
+\begin{equation}
+U(a,b)=\{\Gamma\ge 0: \Gamma\mathbf 1=b,\ \Gamma^{\top}\mathbf 1=a\}.
+\end{equation}
+The implementation uses Sinkhorn scaling with robust cost normalization.
+
+\section{Transport Sheaf Discrepancy}
+The main Phase 5 statistic is the transport sheaf discrepancy:
+\begin{equation}
+\operatorname{TSD}(A,B)=
+\sum_{i\in A}\sum_{j\in B}\Gamma^{\star}_{ij}\,\|\bm{s}(p_i)-\bm{s}(q_j)\|_2.
+\end{equation}
+This measures how much sheaf residual structure changes under the best distributional alignment between two groups.
+
+\section{Edge-Level Transport Stability}
+For an edge $e\in\{D\to R,D\to C,R\to C\}$, define the transported edge gap
+\begin{equation}
+G_e(A,B)=\sum_{i,j}\Gamma^{\star}_{ij}\left|E_e(p_i)-E_e(q_j)\right|.
+\end{equation}
+To make the score scale-free, define
+\begin{equation}
+\operatorname{Stable}_e(A,B)=\exp\left(-\frac{G_e(A,B)}{\sigma_e+10^{-9}}\right),
+\end{equation}
+where $\sigma_e$ is the cohort standard deviation of edge energy $E_e$.  Values closer to $1$ mean stronger preservation of that edge residual channel under transport.
+
+\section{Permutation Test}
+To determine whether the observed transport sheaf geometry is non-random, group labels are permuted $B$ times.  For each permutation $b$, we compute the mean pairwise transport sheaf discrepancy
+\begin{equation}
+\overline{\operatorname{TSD}}^{(b)}.
+\end{equation}
+The empirical high-gap $p$-value is
+\begin{equation}
+ p=\frac{1+\#\{b:\overline{\operatorname{TSD}}^{(b)}\ge \overline{\operatorname{TSD}}^{\mathrm{obs}}\}}{B+1}.
+\end{equation}
+The $z$-score is
+\begin{equation}
+ z=\frac{\overline{\operatorname{TSD}}^{\mathrm{obs}}-\mu_{\mathrm{null}}}{\sigma_{\mathrm{null}}+10^{-9}}.
+\end{equation}
+
+\section{Transport-to-Reference Prediction Features}
+For each patient $p$ and group $g$, Phase 5 defines a cross-fitted transport reference distance
+\begin{equation}
+ d_g(p)=\frac{1}{|\mathcal T_g|}\sum_{q\in\mathcal T_g}c(p,q),
+\end{equation}
+where $\mathcal T_g$ is the training-fold empirical distribution of group $g$ and $c(p,q)$ is the same 60/40 biological-sheaf cost used in the OT analysis.  These features are evaluated under strict cross-validation:
+\begin{equation}
+\{d_g(p)\}_{g\in\mathcal G},\qquad
+\min_g d_g(p),\qquad
+\text{second-min}_g d_g(p)-\min_g d_g(p).
+\end{equation}
+They are compared against baseline features and Phase 4 sheaf energies.
+
+\section{Outputs Produced}
+The package produces:
+\begin{itemize}[leftmargin=2em]
+    \item pairwise OT sheaf transport metrics,
+    \item edge-level transport stability scores,
+    \item permutation tests for non-random sheaf transport separation,
+    \item cross-fitted patient-level transport-to-reference features,
+    \item strict prediction metrics and accuracy deltas,
+    \item heatmaps and accuracy-delta figures.
+\end{itemize}
+
+\section{Permutation Results}
+\input{phase5_perm_table.tex}
+
+\section{Accuracy Delta Results}
+\input{phase5_delta_table.tex}
+
+\section{Interpretation for the Manuscript}
+The strongest Phase 5 claim is not that optimal transport alone maximizes classification accuracy.  The stronger and more defensible claim is that sheaf residual signatures define a non-random distributional geometry between biological tumor groups.  This gives a robustness layer that standard feature-fusion and graph-aggregation models generally do not provide: the framework can say which regulatory residual channels remain stable or unstable under cross-group distributional alignment.
+
+\section{Novelty Positioning}
+Optimal transport has been widely used for single-cell and multi-omics alignment, and sheaf neural networks have been developed as graph learning models with restriction maps and sheaf Laplacians.  Phase 5 combines these ideas in a more specific way: the transported object is a glioma-specific sheaf residual signature, not merely a raw expression vector or patient similarity embedding.  Therefore, the intended novelty is \emph{transport-calibrated stability of learned regulatory inconsistency geometry}.
+
+\section{Limitations}
+This phase remains internally validated on the current dataset.  The strongest next validation is external TCGA-to-CGGA transport, where the same OT-sheaf stability statistics can test whether residual signatures transfer across cohorts.  Until then, the appropriate claim is internal robustness and non-random transport geometry, not definitive external state-of-the-art survival prediction.
+
+\section{Immediate Next Step}
+The next phase should use an external cohort.  The most natural experiment is:
+\begin{equation}
+\text{TCGA glioma}\longrightarrow \text{CGGA glioma}
+\end{equation}
+with the same cost, the same sheaf signatures, and the same edge-level OT stability statistics.
+
+\end{document}

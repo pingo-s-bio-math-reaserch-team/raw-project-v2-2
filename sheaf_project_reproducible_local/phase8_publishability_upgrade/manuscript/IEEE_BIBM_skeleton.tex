@@ -1,0 +1,43 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{xcolor}
+\title{Sheaf-Theoretic Quantification of Multi-Omics Regulatory Inconsistency in Brain Tumors}
+\author{Anonymous Authors}
+\begin{document}
+\maketitle
+\begin{abstract}
+Multi-omics glioma studies often integrate genomic, epigenomic, transcriptomic, and clinical variables through feature fusion or graph neural aggregation. We introduce a biologically constrained cellular-sheaf framework that instead measures regulatory inconsistency: each edge encodes an expected relation between source and target biological states, and patient-level deviations from these relations define a sheaf Laplacian energy. The resulting residual signatures decompose tumor disorder into genomic-to-regulatory, genomic-to-phenotype, and regulatory-to-phenotype channels. Internal validation shows non-random subtype and grade-specific sheaf geometries, OT-calibrated residual stability, and strict grade-prediction gains. External validation on CGGA is specified as the decisive next evaluation.
+\end{abstract}
+\section{Introduction}
+State problem, gap, and contribution. Avoid claiming external SOTA until CGGA validation is complete.
+\section{Related Work}
+Multi-omics graph learning, glioma stratification, sheaf neural networks, and optimal transport in omics.
+\section{Methods}
+\subsection{Regulatory Sheaf}
+Let $G=(V,E)$ be a graph of biological state spaces. Each vertex $v$ has stalk $\mathcal F(v)$ and each edge $e=(u,v)$ has restriction maps $\rho_{u,e}$ and $\rho_{v,e}$. For patient $p$, the edge residual is
+\begin{equation}
+r_{p,e}=\rho_{u,e}x_{p,u}-\rho_{v,e}x_{p,v}.
+\end{equation}
+The sheaf regulatory inconsistency score is
+\begin{equation}
+\mathrm{SRIS}(p)=\sum_{e\in E}\|r_{p,e}\|^2=x_p^T L_{\mathcal F}x_p.
+\end{equation}
+\subsection{Group-Specific and Reference Sheaves}
+Define $L_g$ for each biological group and counterfactual energy $E_g(p)=x_p^T L_gx_p$.
+\subsection{Transport-Calibrated Sheaf Stability}
+For groups $A,B$ and OT plan $\Gamma^\star$, define
+\begin{equation}
+\mathrm{TSD}(A,B)=\sum_{i,j}\Gamma^\star_{ij}\|s(p_i)-s(q_j)\|_2.
+\end{equation}
+\section{Experiments}
+Internal lockbox validation, ablations, negative controls, and external CGGA validation plan.
+\section{Results}
+Insert final internal/external results only after locked execution.
+\section{Discussion}
+Emphasize interpretability, limitations, and external validation.
+\end{document}

@@ -1,0 +1,8 @@
+claim_id,claim,status,support
+Safe-1,We introduce a biologically constrained cellular-sheaf framework for glioma multi-omics inconsistency.,safe,"constructed SRIS, learned maps, Laplacians, and edge residuals across Phases 1-2"
+Safe-2,Subtype and grade groups exhibit statistically non-random sheaf Laplacian geometry under internal permutation tests.,safe internal,"Phase 4 permutation tests, p=0.0099 across strict protocols"
+Safe-3,Sheaf residual signatures exhibit non-random OT-calibrated transport gaps between biological groups.,safe internal,"Phase 5 transport permutation z-scores 6.11-19.74, p=0.0099"
+Safe-4,Consensus sheaf features add measurable strict grade-classification signal in internal cross-validation.,safe internal,Phase 6 strict grade-label macro-F1 +0.0377 and balanced accuracy +0.0308
+Caution-1,The framework improves survival prediction over clinical-molecular baselines.,caution,"Phase 3 C-index gain is only about +0.0011; describe as survival-associated, not clinically superior"
+Unsafe-1,The method is state of the art for glioma survival prediction.,not supported yet,requires external TCGA-to-CGGA validation and stronger C-index/AUROC gains
+Unsafe-2,This is the first use of sheaves in machine learning.,false,sheaf neural networks/neural sheaf diffusion already exist; our novelty is glioma-specific residual geometry

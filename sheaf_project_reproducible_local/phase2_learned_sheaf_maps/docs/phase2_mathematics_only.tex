@@ -1,0 +1,328 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\title{Phase 2 Mathematical Specification: Learned Regulatory Sheaf Maps}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Objects}
+
+\[
+P=\{1,\dots,n\},\qquad G=(V,E),\qquad V=\{D,R,C\},
+\]
+
+\[
+E=\{D\to R,\;D\to C,\;R\to C\}.
+\]
+
+\[
+\mathcal F(D)=\mathbb R^{d_D},\qquad
+\mathcal F(R)=\mathbb R^{d_R},\qquad
+\mathcal F(C)=\mathbb R^{d_C}.
+\]
+
+\[
+\begin{aligned}
+ x_D(p)&\in \mathbb R^{d_D},\qquad
+ x_R(p)\in \mathbb R^{d_R},\qquad
+ x_C(p)\in \mathbb R^{d_C},\\
+ x(p)&=\begin{bmatrix}x_D(p)\\x_R(p)\\x_C(p)\end{bmatrix}
+ \in \mathbb R^{d_D+d_R+d_C}.
+\end{aligned}
+\]
+
+\[
+\mathcal F(DR)=\mathbb R^{d_R},\qquad
+\mathcal F(DC)=\mathbb R^{d_C},\qquad
+\mathcal F(RC)=\mathbb R^{d_C}.
+\]
+
+\section*{Learned Restriction Maps}
+
+\[
+\rho_{D,DR}=W_{DR}\in\mathbb R^{d_R\times d_D},
+\qquad
+\rho_{R,DR}=I_{d_R}.
+\]
+
+\[
+\rho_{D,DC}=W_{DC}\in\mathbb R^{d_C\times d_D},
+\qquad
+\rho_{C,DC}=I_{d_C}.
+\]
+
+\[
+\rho_{R,RC}=W_{RC}\in\mathbb R^{d_C\times d_R},
+\qquad
+\rho_{C,RC}=I_{d_C}.
+\]
+
+\section*{Residuals}
+
+\[
+ r_{DR}(p)=W_{DR}x_D(p)-x_R(p)\in\mathbb R^{d_R}.
+\]
+
+\[
+ r_{DC}(p)=W_{DC}x_D(p)-x_C(p)\in\mathbb R^{d_C}.
+\]
+
+\[
+ r_{RC}(p)=W_{RC}x_R(p)-x_C(p)\in\mathbb R^{d_C}.
+\]
+
+\[
+ E_{DR}(p)=\frac{1}{d_R}\|r_{DR}(p)\|_2^2,
+\qquad
+ E_{DC}(p)=\frac{1}{d_C}\|r_{DC}(p)\|_2^2,
+\qquad
+ E_{RC}(p)=\frac{1}{d_C}\|r_{RC}(p)\|_2^2.
+\]
+
+\[
+\operatorname{SRIS}_{2}(p)=E_{DR}(p)+E_{DC}(p)+E_{RC}(p).
+\]
+
+\[
+\phi_e(p)=\frac{E_e(p)}{\operatorname{SRIS}_{2}(p)+\varepsilon},
+\qquad
+\sum_{e\in E}\phi_e(p)\approx 1.
+\]
+
+\section*{Ridge Sheaf}
+
+For every edge $u\to v$:
+\[
+X_u=\begin{bmatrix}x_u(1)^\top\\ \vdots\\ x_u(n)^\top\end{bmatrix}\in\mathbb R^{n\times d_u},
+\qquad
+X_v=\begin{bmatrix}x_v(1)^\top\\ \vdots\\ x_v(n)^\top\end{bmatrix}\in\mathbb R^{n\times d_v}.
+\]
+
+\[
+\widehat W_{uv}^{\mathrm{ridge}}
+=\arg\min_{W\in\mathbb R^{d_v\times d_u}}
+\left\|X_uW^\top-X_v\right\|_F^2+\\lambda\|W\|_F^2.
+\]
+
+\[
+\widehat W_{uv}^{\mathrm{ridge}}
+=
+\left[(X_u^\top X_u+\lambda I_{d_u})^{-1}X_u^\top X_v\right]^\top.
+\]
+
+\section*{Biologically Constrained Sheaf}
+
+\[
+M_{uv}\in\{0,1\}^{d_v\times d_u},
+\qquad
+W\odot (\mathbf 1-M_{uv})=0.
+\]
+
+\[
+\widehat W_{uv}^{+}
+=\arg\min_{W\in\mathbb R^{d_v\times d_u}}
+\left\|X_uW^\top-X_v\right\|_F^2+
+\lambda\|W\|_F^2
+\]
+
+\[
+\text{subject to}\
+\qquad
+W_{ij}\ge 0,
+\qquad
+W_{ij}=0\quad\text{if }(M_{uv})_{ij}=0.
+\]
+
+For each target coordinate $j$:
+\[
+\widehat w_j
+=
+\arg\min_{w\ge 0}
+\left\|
+\begin{bmatrix}X_{u,M_j}\\ \sqrt{\lambda}I\end{bmatrix}w
+-
+\begin{bmatrix}X_{v,j}\\0\end{bmatrix}
+\right\|_2^2.
+\]
+
+\section*{Cross-Fitted Residuals}
+
+\[
+P=K_1\sqcup K_2\sqcup\cdots\sqcup K_m.
+\]
+
+\[
+\widehat W_{uv}^{(-k)}
+=\arg\min_W
+\sum_{p\notin K_k}\|Wx_u(p)-x_v(p)\|_2^2+
+\lambda\|W\|_F^2.
+\]
+
+\[
+ r_{uv}^{\mathrm{cf}}(p)=\widehat W_{uv}^{(-k)}x_u(p)-x_v(p),
+\qquad p\in K_k.
+\]
+
+\[
+\operatorname{SRIS}_{2}^{\mathrm{cf}}(p)
+=
+\sum_{u\to v}\frac{1}{d_v}\left\|r_{uv}^{\mathrm{cf}}(p)\right\|_2^2.
+\]
+
+\section*{Reference Sheaf}
+
+\[
+P_0\subseteq P,
+\qquad
+P_0=\{p:\operatorname{IDHmut\text{-}codel}(p)=1\}\cup
+\{p:\operatorname{IDHmut}(p)=1,\;\operatorname{grade}(p)=2\}.
+\]
+
+\[
+\widehat W_{uv}^{(0)}
+=\arg\min_W
+\sum_{p\in P_0}\|Wx_u(p)-x_v(p)\|_2^2+\lambda\|W\|_F^2.
+\]
+
+\[
+ r_{uv}^{(0)}(p)=\widehat W_{uv}^{(0)}x_u(p)-x_v(p),
+\qquad
+\operatorname{SRIS}_{2}^{(0)}(p)=
+\sum_{u\to v}\frac{1}{d_v}\|r_{uv}^{(0)}(p)\|_2^2.
+\]
+
+\section*{Coboundary and Laplacian}
+
+\[
+B_{\mathcal F}^{(2)}=
+\begin{bmatrix}
+ W_{DR} & -I_{d_R} & 0\\
+ W_{DC} & 0 & -I_{d_C}\\
+ 0 & W_{RC} & -I_{d_C}
+\end{bmatrix}.
+\]
+
+\[
+L_{\mathcal F}^{(2)}=(B_{\mathcal F}^{(2)})^\top B_{\mathcal F}^{(2)}.
+\]
+
+\[
+\left\|B_{\mathcal F}^{(2)}x(p)\right\|_2^2
+=
+\|r_{DR}(p)\|_2^2+
+\|r_{DC}(p)\|_2^2+
+\|r_{RC}(p)\|_2^2.
+\]
+
+\[
+\operatorname{SRIS}_{2}(p)
+=
+\sum_{e\in E}\frac{1}{\dim\mathcal F(e)}
+\left\|\pi_eB_{\mathcal F}^{(2)}x(p)\right\|_2^2.
+\]
+
+\section*{Negative Controls}
+
+\[
+W_{uv}^{\mathrm{id}}=
+\begin{bmatrix}
+I_{\min(d_u,d_v)} & 0
+\end{bmatrix}_{d_v\times d_u}.
+\]
+
+\[
+W_{uv}^{\mathrm{rand}}{}_{ij}\sim N\left(0,\frac{1}{d_u}\right).
+\]
+
+\[
+\widehat W_{uv}^{\mathrm{shuffle}}
+=
+\arg\min_W
+\|X_uW^\top-\Pi X_v\|_F^2+
+\lambda\|W\|_F^2,
+\qquad
+\Pi\in S_n.
+\]
+
+\section*{Leakage-Controlled Variants}
+
+\[
+\mathcal F_{-\operatorname{IDH}}(D)
+=\operatorname{span}\{x_{D,j}:x_{D,j}\ne \operatorname{IDH}\}.
+\]
+
+\[
+\mathcal F_{-\operatorname{grade}}(C)
+=\operatorname{span}\{x_{C,j}:x_{C,j}\ne \operatorname{grade}\}.
+\]
+
+\[
+\operatorname{SRIS}_{2,-S}(p)
+=\sum_{e\in E_S}\frac{1}{\dim\mathcal F_{-S}(e)}
+\left\|r_{e,-S}(p)\right\|_2^2.
+\]
+
+\section*{Validation Functionals}
+
+\[
+U_{ab}=\sum_{i=1}^{n_a}\sum_{j=1}^{n_b}\mathbf 1[s_i>s_j]
++\frac{1}{2}\mathbf 1[s_i=s_j].
+\]
+
+\[
+H=\frac{12}{N(N+1)}\sum_{g=1}^{G}n_g(\bar R_g-\bar R)^2.
+\]
+
+\[
+\rho_{\mathrm{Spearman}}(s,a)
+=\operatorname{corr}(\operatorname{rank}(s),\operatorname{rank}(a)).
+\]
+
+\[
+Y_{24}(p)=
+\begin{cases}
+1,&\delta(p)=1\text{ and }T(p)\le 24,\\
+0,&T(p)>24,\\
+\varnothing,&\delta(p)=0\text{ and }T(p)\le 24.
+\end{cases}
+\]
+
+\[
+\operatorname{AUC}(s,Y_{24})
+=P(s_i>s_j\mid Y_i=1,Y_j=0).
+\]
+
+\section*{Model Family}
+
+\[
+\mathcal M=
+\left\{
+\mathcal F_{\mathrm{ridge}},
+\mathcal F_{+},
+\mathcal F_{\mathrm{ref\text{-}ridge}},
+\mathcal F_{\mathrm{ref}+},
+\mathcal F_{\mathrm{id}},
+\mathcal F_{\mathrm{rand}},
+\mathcal F_{\mathrm{shuffle}}
+\right\}.
+\]
+
+\[
+\boxed{
+\operatorname{SRIS}_{2}^{\mathcal M}(p)
+=
+\sum_{u\to v\in E}\frac{1}{d_v}
+\left\|W_{uv}^{\mathcal M}x_u(p)-x_v(p)\right\|_2^2
+}
+\]
+
+\end{document}

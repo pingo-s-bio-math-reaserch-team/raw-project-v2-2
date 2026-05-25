@@ -1,0 +1,1 @@
+Phase 7 claim ledger script executed. Use phase7_publication_synthesis_package.zip for full publication synthesis tables, or rerun the original builder if available.

@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-05-25T01:08:06.809564",
+  "phases": [
+    {
+      "phase": 1,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase1_sheaf_residual_engine/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase1/phase1_clean_encoded.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase1/phase1_sris_results.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase1/phase1_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase1/phase1_sheaf_metadata.json"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 2,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase2_learned_sheaf_maps/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_sris_all_models.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_model_summary.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_group_tests.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_validation_metrics.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_reconstruction_metrics.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_diagnostic_sris.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase2/phase2_maps_and_laplacians.json"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 3,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase3_survival_validation/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_survival_model_summary.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_likelihood_ratio_tests.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_cox_coefficients.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_time_horizon_accuracy.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase3/phase3_out_of_fold_risks.csv"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 4,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase4_subtype_sheaf_geometry/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_counterfactual_accuracy_metrics.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_laplacian_divergences.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_counterfactual_patient_energies.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_accuracy_deltas.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase4/phase4_permutation_divergence_tests.csv"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 5,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase5_transport_sheaf_stability/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_pairwise_transport_metrics.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_patient_transport_features.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_transport_accuracy_deltas.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_permutation_transport_tests.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase5/phase5_transport_prediction_metrics.csv"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 6,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase6_consensus_sheaf_discovery/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_consensus_feature_discovery.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_prediction_metrics.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_summary.json",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_metric_deltas.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_best_metric_deltas.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_cross_task_consensus.csv",
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase6/phase6_top_features_by_task.csv"
+      ],
+      "missing": []
+    },
+    {
+      "phase": 7,
+      "source_output_dir": "/mnt/data/sheaf_project_reproducible_local/phase7_publication_synthesis/results",
+      "copied_files": [
+        "/mnt/data/sheaf_project_reproducible_local/combined_results/phase7/phase7_local_run_note.txt"
+      ],
+      "missing": []
+    }
+  ]
+}

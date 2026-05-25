@@ -1,0 +1,289 @@
+{
+  "n_patients": 420,
+  "analysis_specs": [
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "full_geometry"
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters"
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_grade_no_clusters"
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters"
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters"
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters"
+    }
+  ],
+  "protocols": {
+    "full_geometry": "All Phase 1 tumor state features. Used for biological geometry discovery, not leakage-free prediction.",
+    "strict_no_idh_no_clusters": "Removes IDH indicator and cluster risk variables for stricter subtype analysis.",
+    "strict_no_grade_no_clusters": "Removes grade risk and cluster risk variables for stricter grade analysis.",
+    "strict_no_idh_no_grade_no_clusters": "Strictest leakage-aware protocol."
+  },
+  "best_balanced_accuracy_rows": [
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "full_geometry",
+      "method": "baseline_logistic_features",
+      "n": 414,
+      "accuracy": 0.9806763285024155,
+      "balanced_accuracy": 0.9644705744705745,
+      "macro_f1": 0.9635042068830573,
+      "confusion_matrix": "[[51, 4, 0], [3, 97, 0], [1, 0, 258]]",
+      "auroc_ovr_weighted": 0.9984579555522642,
+      "auroc_ovr_macro": 0.9969907429062372,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "full_geometry",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "n": 414,
+      "accuracy": 0.9782608695652174,
+      "balanced_accuracy": 0.9631835731835731,
+      "macro_f1": 0.9612642659614798,
+      "confusion_matrix": "[[51, 4, 0], [3, 97, 0], [1, 1, 257]]",
+      "auroc_ovr_weighted": 0.9955919080222685,
+      "auroc_ovr_macro": 0.9919164978715456,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "method": "baseline_logistic_features",
+      "n": 414,
+      "accuracy": 0.9057971014492754,
+      "balanced_accuracy": 0.9082028782028783,
+      "macro_f1": 0.8882343052478582,
+      "confusion_matrix": "[[51, 3, 1], [5, 89, 6], [4, 20, 235]]",
+      "auroc_ovr_weighted": 0.9820635999801053,
+      "auroc_ovr_macro": 0.9815409642522631,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters",
+      "method": "baseline_logistic_features",
+      "n": 414,
+      "accuracy": 0.9082125603864735,
+      "balanced_accuracy": 0.9047162747162747,
+      "macro_f1": 0.8889747727250347,
+      "confusion_matrix": "[[50, 4, 1], [5, 89, 6], [3, 19, 237]]",
+      "auroc_ovr_weighted": 0.9825617504640569,
+      "auroc_ovr_macro": 0.9821291389661395,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "n": 414,
+      "accuracy": 0.8888888888888888,
+      "balanced_accuracy": 0.876006786006786,
+      "macro_f1": 0.8628706199460917,
+      "confusion_matrix": "[[47, 5, 3], [5, 87, 8], [5, 20, 234]]",
+      "auroc_ovr_weighted": 0.9734611999134454,
+      "auroc_ovr_macro": 0.9708010994735871,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "n": 420,
+      "accuracy": 0.8714285714285714,
+      "balanced_accuracy": 0.8718367346938776,
+      "macro_f1": 0.8687499999999999,
+      "confusion_matrix": "[[153, 22], [32, 213]]",
+      "auroc_ovr_weighted": NaN,
+      "auroc_ovr_macro": NaN,
+      "auroc": 0.932268221574344,
+      "auprc": 0.936043564636915
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "n": 414,
+      "accuracy": 0.8913043478260869,
+      "balanced_accuracy": 0.8711547911547911,
+      "macro_f1": 0.860853127256087,
+      "confusion_matrix": "[[47, 5, 3], [7, 84, 9], [4, 17, 238]]",
+      "auroc_ovr_weighted": 0.9721752326580293,
+      "auroc_ovr_macro": 0.9706597722699799,
+      "auroc": NaN,
+      "auprc": NaN
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "method": "baseline_logistic_features",
+      "n": 420,
+      "accuracy": 0.8666666666666667,
+      "balanced_accuracy": 0.8587755102040816,
+      "macro_f1": 0.8616470588235294,
+      "confusion_matrix": "[[142, 33], [23, 222]]",
+      "auroc_ovr_weighted": NaN,
+      "auroc_ovr_macro": NaN,
+      "auroc": 0.9011778425655976,
+      "auprc": 0.8882576756708471
+    }
+  ],
+  "best_delta_rows": [
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": 0.0785714285714286,
+      "delta_balanced_accuracy": 0.0484230055658626,
+      "delta_macro_f1": 0.0566386862888947,
+      "baseline_accuracy": 0.6571428571428571,
+      "method_accuracy": 0.7357142857142858,
+      "baseline_balanced_accuracy": 0.6081632653061225,
+      "method_balanced_accuracy": 0.6565862708719852
+    },
+    {
+      "task": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": 0.0047619047619047,
+      "delta_balanced_accuracy": 0.0130612244897959,
+      "delta_macro_f1": 0.0071029411764704,
+      "baseline_accuracy": 0.8666666666666667,
+      "method_accuracy": 0.8714285714285714,
+      "baseline_balanced_accuracy": 0.8587755102040816,
+      "method_balanced_accuracy": 0.8718367346938776
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "full_geometry",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": -0.002415458937198,
+      "delta_balanced_accuracy": -0.0012870012870014,
+      "delta_macro_f1": -0.0022399409215774,
+      "baseline_accuracy": 0.9806763285024156,
+      "method_accuracy": 0.9782608695652174,
+      "baseline_balanced_accuracy": 0.9644705744705744,
+      "method_balanced_accuracy": 0.9631835731835732
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": -0.0047619047619047,
+      "delta_balanced_accuracy": -0.0092145949288806,
+      "delta_macro_f1": -0.0023628261581852,
+      "baseline_accuracy": 0.7238095238095238,
+      "method_accuracy": 0.719047619047619,
+      "baseline_balanced_accuracy": 0.6481137909709339,
+      "method_balanced_accuracy": 0.6388991960420533
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": -0.0169082125603865,
+      "delta_balanced_accuracy": -0.0321960921960922,
+      "delta_macro_f1": -0.0253636853017664,
+      "baseline_accuracy": 0.9057971014492754,
+      "method_accuracy": 0.8888888888888888,
+      "baseline_balanced_accuracy": 0.9082028782028784,
+      "method_balanced_accuracy": 0.876006786006786
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters",
+      "method": "hybrid_logistic_features_plus_sheaf_energies",
+      "delta_accuracy": -0.0169082125603865,
+      "delta_balanced_accuracy": -0.0335614835614835,
+      "delta_macro_f1": -0.0281216454689476,
+      "baseline_accuracy": 0.9082125603864736,
+      "method_accuracy": 0.8913043478260869,
+      "baseline_balanced_accuracy": 0.9047162747162748,
+      "method_balanced_accuracy": 0.8711547911547911
+    },
+    {
+      "task": "grade_label",
+      "protocol": "strict_no_idh_no_grade_no_clusters",
+      "method": "counterfactual_min_energy_sheaf",
+      "delta_accuracy": -0.119047619047619,
+      "delta_balanced_accuracy": -0.1181199752628325,
+      "delta_macro_f1": -0.1137067196088971,
+      "baseline_accuracy": 0.6571428571428571,
+      "method_accuracy": 0.5380952380952381,
+      "baseline_balanced_accuracy": 0.6081632653061225,
+      "method_balanced_accuracy": 0.49004329004329
+    },
+    {
+      "task": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters",
+      "method": "counterfactual_min_energy_sheaf",
+      "delta_accuracy": -0.1956521739130435,
+      "delta_balanced_accuracy": -0.1792734292734291,
+      "delta_macro_f1": -0.2061259759521874,
+      "baseline_accuracy": 0.9082125603864736,
+      "method_accuracy": 0.7125603864734299,
+      "baseline_balanced_accuracy": 0.9047162747162748,
+      "method_balanced_accuracy": 0.7254428454428455
+    }
+  ],
+  "permutation_tests": [
+    {
+      "label_col": "idh_codel_subtype",
+      "protocol": "full_geometry",
+      "n_perm": 100,
+      "observed_mean_pairwise_frobenius": 0.8212070845691949,
+      "perm_mean": 0.4597152394234569,
+      "perm_std": 0.0406448001626709,
+      "permutation_p_value": 0.0099009900990099,
+      "z_score_vs_permutation": 8.893923817061891
+    },
+    {
+      "label_col": "idh_codel_subtype",
+      "protocol": "strict_no_idh_no_clusters",
+      "n_perm": 100,
+      "observed_mean_pairwise_frobenius": 0.8116640795879263,
+      "perm_mean": 0.4512697594269431,
+      "perm_std": 0.0391865940423459,
+      "permutation_p_value": 0.0099009900990099,
+      "z_score_vs_permutation": 9.196875538679812
+    },
+    {
+      "label_col": "grade_label",
+      "protocol": "strict_no_grade_no_clusters",
+      "n_perm": 100,
+      "observed_mean_pairwise_frobenius": 0.7103644722314657,
+      "perm_mean": 0.4808621460710233,
+      "perm_std": 0.0451710263351751,
+      "permutation_p_value": 0.0099009900990099,
+      "z_score_vs_permutation": 5.080740775073306
+    },
+    {
+      "label_col": "grade4_status",
+      "protocol": "strict_no_grade_no_clusters",
+      "n_perm": 100,
+      "observed_mean_pairwise_frobenius": 0.7050782131371915,
+      "perm_mean": 0.3813039463312024,
+      "perm_std": 0.0558714825880083,
+      "permutation_p_value": 0.0099009900990099,
+      "z_score_vs_permutation": 5.794981515770008
+    }
+  ]
+}

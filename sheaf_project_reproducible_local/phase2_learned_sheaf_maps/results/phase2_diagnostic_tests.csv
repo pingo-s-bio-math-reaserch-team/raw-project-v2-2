@@ -1,0 +1,19 @@
+model,variant,test,statistic,pvalue
+bio_constrained_nonnegative,no_grade,SRIS by IDH mutant status,23816.0,0.0073245336383404415
+bio_constrained_nonnegative,no_grade,SRIS by grade,6.258575275129715,0.04374895126441732
+bio_constrained_nonnegative,no_grade,SRIS vs age external Spearman,0.10256436481770989,0.0356213332390199
+bio_constrained_nonnegative,no_grade_no_idh,SRIS by IDH mutant status,23202.0,0.029937675999600448
+bio_constrained_nonnegative,no_grade_no_idh,SRIS by grade,5.272897528570638,0.07161514075691355
+bio_constrained_nonnegative,no_grade_no_idh,SRIS vs age external Spearman,0.10160179945558358,0.037397256827718904
+bio_constrained_nonnegative,no_idh,SRIS by IDH mutant status,20398.0,0.8721107997815036
+bio_constrained_nonnegative,no_idh,SRIS by grade,2.468258743050683,0.2910880816508789
+bio_constrained_nonnegative,no_idh,SRIS vs age external Spearman,0.01930574163816296,0.6932063223351943
+ridge_unconstrained,no_grade,SRIS by IDH mutant status,23991.0,0.004694166603456148
+ridge_unconstrained,no_grade,SRIS by grade,6.285091974291845,0.043172740616534686
+ridge_unconstrained,no_grade,SRIS vs age external Spearman,0.10038650297085908,0.03974620499467892
+ridge_unconstrained,no_grade_no_idh,SRIS by IDH mutant status,22733.0,0.074954914895815
+ridge_unconstrained,no_grade_no_idh,SRIS by grade,4.345419038763566,0.11386866918378946
+ridge_unconstrained,no_grade_no_idh,SRIS vs age external Spearman,0.08416796919951076,0.08491610368487618
+ridge_unconstrained,no_idh,SRIS by IDH mutant status,19932.0,0.5832415649938234
+ridge_unconstrained,no_idh,SRIS by grade,4.223569291244985,0.12102179258154107
+ridge_unconstrained,no_idh,SRIS vs age external Spearman,-0.005864577097751708,0.9046171015595452

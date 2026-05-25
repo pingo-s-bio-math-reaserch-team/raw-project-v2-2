@@ -1,0 +1,553 @@
+{
+  "n_patients": 420,
+  "core_models": [
+    "ridge_unconstrained",
+    "bio_constrained_nonnegative",
+    "reference_ridge_lowrisk",
+    "reference_bio_constrained_lowrisk",
+    "identity_projection",
+    "random_projection",
+    "shuffled_target_ridge"
+  ],
+  "sris_summary": [
+    {
+      "model": "bio_constrained_nonnegative",
+      "n": 420,
+      "sris_mean": 2.219606834473075,
+      "sris_median": 1.7502827118220128,
+      "sris_std": 1.7547193421877991,
+      "mean_E_D_to_R": 0.6550350880283777,
+      "mean_E_D_to_C": 0.7706297970652761,
+      "mean_E_R_to_C": 0.793941949379421
+    },
+    {
+      "model": "identity_projection",
+      "n": 420,
+      "sris_mean": 4.6413341173308975,
+      "sris_median": 4.02712940403269,
+      "sris_std": 2.7627470028534744,
+      "mean_E_D_to_R": 1.5180317379903903,
+      "mean_E_D_to_C": 1.4235336893810324,
+      "mean_E_R_to_C": 1.6997686899594755
+    },
+    {
+      "model": "random_projection",
+      "n": 420,
+      "sris_mean": 4.840380987403482,
+      "sris_median": 4.347394278375854,
+      "sris_std": 2.706459428844631,
+      "mean_E_D_to_R": 1.7675049173051218,
+      "mean_E_D_to_C": 1.3142508218249374,
+      "mean_E_R_to_C": 1.7586252482734237
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "n": 420,
+      "sris_mean": 2.54980080396997,
+      "sris_median": 1.827427265150651,
+      "sris_std": 2.027915195729018,
+      "mean_E_D_to_R": 0.7152136831654748,
+      "mean_E_D_to_C": 0.8640123249071548,
+      "mean_E_R_to_C": 0.9705747958973407
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "n": 420,
+      "sris_mean": 3.0237377254483166,
+      "sris_median": 2.412416541613931,
+      "sris_std": 2.3225374953138918,
+      "mean_E_D_to_R": 0.7918578664950584,
+      "mean_E_D_to_C": 0.8591373344229644,
+      "mean_E_R_to_C": 1.3727425245302947
+    },
+    {
+      "model": "ridge_unconstrained",
+      "n": 420,
+      "sris_mean": 2.145297655068436,
+      "sris_median": 1.683398734950602,
+      "sris_std": 1.6743117846192452,
+      "mean_E_D_to_R": 0.6417621626725709,
+      "mean_E_D_to_C": 0.7424534196651442,
+      "mean_E_R_to_C": 0.7610820727307208
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "n": 420,
+      "sris_mean": 3.0942520210508753,
+      "sris_median": 2.6574681459117886,
+      "sris_std": 2.083588201833257,
+      "mean_E_D_to_R": 1.0448215472608524,
+      "mean_E_D_to_C": 1.012237640351957,
+      "mean_E_R_to_C": 1.0371928334380656
+    }
+  ],
+  "group_tests": [
+    {
+      "model": "bio_constrained_nonnegative",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 20718.0,
+      "pvalue": 0.9168464782564161
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 1.238332457207889,
+      "pvalue": 0.5383931473140782
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": 0.006665297337137275,
+      "pvalue": 0.8916692140980191
+    },
+    {
+      "model": "identity_projection",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 17878.0,
+      "pvalue": 0.023980944354637126
+    },
+    {
+      "model": "identity_projection",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 19.796428089821802,
+      "pvalue": 5.026437185207134e-05
+    },
+    {
+      "model": "identity_projection",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": -0.0736857028790566,
+      "pvalue": 0.13164229776299347
+    },
+    {
+      "model": "random_projection",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 12827.0,
+      "pvalue": 1.0505047537766933e-10
+    },
+    {
+      "model": "random_projection",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 73.48549920582104,
+      "pvalue": 1.1036378780044267e-16
+    },
+    {
+      "model": "random_projection",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": -0.13885525796576897,
+      "pvalue": 0.0043578074479000825
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 22980.0,
+      "pvalue": 0.04700821980193893
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 36.61846297577563,
+      "pvalue": 1.1178970160722218e-08
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": 0.04667781827258436,
+      "pvalue": 0.33994198774209394
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 28126.0,
+      "pvalue": 3.6730681840334274e-10
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 67.33066793500257,
+      "pvalue": 2.395141779925322e-15
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": 0.15693768376627884,
+      "pvalue": 0.001252281514792292
+    },
+    {
+      "model": "ridge_unconstrained",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 20719.0,
+      "pvalue": 0.9161863331841106
+    },
+    {
+      "model": "ridge_unconstrained",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 1.8041522683047333,
+      "pvalue": 0.4057264422039374
+    },
+    {
+      "model": "ridge_unconstrained",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": -0.006618801290864405,
+      "pvalue": 0.8924203165198543
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "variant": "core",
+      "test": "SRIS by IDH mutant status",
+      "statistic": 12678.0,
+      "pvalue": 4.596375076303851e-11
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "variant": "core",
+      "test": "SRIS by grade",
+      "statistic": 93.80112850841056,
+      "pvalue": 4.279014382748737e-21
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "variant": "core",
+      "test": "SRIS vs age external Spearman",
+      "statistic": -0.16589756908733871,
+      "pvalue": 0.0006414873233685387
+    }
+  ],
+  "validation_metrics": [
+    {
+      "model": "bio_constrained_nonnegative",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.5164609053497943
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8525766928544706
+    },
+    {
+      "model": "identity_projection",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.5469509913954358
+    },
+    {
+      "model": "identity_projection",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "identity_projection",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8523896371118593
+    },
+    {
+      "model": "random_projection",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.6416011971567527
+    },
+    {
+      "model": "random_projection",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "random_projection",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8570192667414889
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.571572203516648
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8560372240927797
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.658062102506547
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8622100635989525
+    },
+    {
+      "model": "ridge_unconstrained",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.516110175832398
+    },
+    {
+      "model": "ridge_unconstrained",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "ridge_unconstrained",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8525766928544706
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "endpoint": "24m death",
+      "predictors": "SRIS only",
+      "n": 419,
+      "AUROC_orientation_free": 0.6525439580995136
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "endpoint": "24m death",
+      "predictors": "age only",
+      "n": 419,
+      "AUROC_orientation_free": 0.852155817433595
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "endpoint": "24m death",
+      "predictors": "age + SRIS",
+      "n": 419,
+      "AUROC_orientation_free": 0.8544472502805837
+    }
+  ],
+  "reconstruction_metrics": [
+    {
+      "model": "bio_constrained_nonnegative",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 0.6550350880283777,
+      "median_edge_energy": 0.4682195984204919
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 0.7706297970652761,
+      "median_edge_energy": 0.5141244576035691
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 0.793941949379421,
+      "median_edge_energy": 0.5499383633750241
+    },
+    {
+      "model": "bio_constrained_nonnegative",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 2.219606834473075,
+      "median_edge_energy": 1.7502827118220128
+    },
+    {
+      "model": "identity_projection",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 1.5180317379903903,
+      "median_edge_energy": 1.1222203455897901
+    },
+    {
+      "model": "identity_projection",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 1.4235336893810324,
+      "median_edge_energy": 1.0838236983641485
+    },
+    {
+      "model": "identity_projection",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 1.6997686899594755,
+      "median_edge_energy": 1.324100236038929
+    },
+    {
+      "model": "identity_projection",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 4.6413341173308975,
+      "median_edge_energy": 4.02712940403269
+    },
+    {
+      "model": "random_projection",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 1.7675049173051218,
+      "median_edge_energy": 1.4429485768222277
+    },
+    {
+      "model": "random_projection",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 1.3142508218249374,
+      "median_edge_energy": 0.968784052789683
+    },
+    {
+      "model": "random_projection",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 1.7586252482734237,
+      "median_edge_energy": 1.3253445412912335
+    },
+    {
+      "model": "random_projection",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 4.840380987403482,
+      "median_edge_energy": 4.347394278375854
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 0.7152136831654748,
+      "median_edge_energy": 0.4736288810413183
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 0.8640123249071548,
+      "median_edge_energy": 0.5730136542774191
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 0.9705747958973407,
+      "median_edge_energy": 0.6424659865066807
+    },
+    {
+      "model": "reference_bio_constrained_lowrisk",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 2.54980080396997,
+      "median_edge_energy": 1.827427265150651
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 0.7918578664950584,
+      "median_edge_energy": 0.5770199953858985
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 0.8591373344229644,
+      "median_edge_energy": 0.5856099424612795
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 1.3727425245302947,
+      "median_edge_energy": 1.0140782840576048
+    },
+    {
+      "model": "reference_ridge_lowrisk",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 3.0237377254483166,
+      "median_edge_energy": 2.412416541613931
+    },
+    {
+      "model": "ridge_unconstrained",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 0.6417621626725709,
+      "median_edge_energy": 0.4453088906619932
+    },
+    {
+      "model": "ridge_unconstrained",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 0.7424534196651442,
+      "median_edge_energy": 0.5048048245110882
+    },
+    {
+      "model": "ridge_unconstrained",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 0.7610820727307208,
+      "median_edge_energy": 0.5347745280603509
+    },
+    {
+      "model": "ridge_unconstrained",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 2.145297655068436,
+      "median_edge_energy": 1.683398734950602
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "edge": "D_to_R",
+      "crossfit_or_reference_mse": 1.0448215472608524,
+      "median_edge_energy": 0.9228768611810783
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "edge": "D_to_C",
+      "crossfit_or_reference_mse": 1.012237640351957,
+      "median_edge_energy": 0.7914424086101137
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "edge": "R_to_C",
+      "crossfit_or_reference_mse": 1.0371928334380656,
+      "median_edge_energy": 0.7941400930720641
+    },
+    {
+      "model": "shuffled_target_ridge",
+      "edge": "ALL",
+      "crossfit_or_reference_mse": 3.0942520210508753,
+      "median_edge_energy": 2.6574681459117886
+    }
+  ],
+  "diagnostic_note": "no_idh/no_grade variants are provided to prevent leakage in downstream label-specific validation."
+}

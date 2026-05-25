@@ -1,0 +1,10 @@
+base_model,full_model,lr_statistic,df,p_value,delta_cv_c_index
+Clinical + molecular,Clinical + molecular + Phase1 SRIS,10.61050119509946,1,0.0011244720593120744,-0.00029129410572714676
+Clinical + molecular,Clinical + molecular + Phase1 edges,11.23515267860921,3,0.010519959358141052,-0.002127713467919623
+Clinical + molecular,Clinical + molecular + Phase1 SRIS+edges,11.235152678608756,4,0.024044544495213586,-0.002127713467919623
+No-grade baseline,No-grade + Phase1 edges,6.2062845292980455,3,0.10199416416142017,-0.002849616251678011
+No-IDH baseline,No-IDH + Phase1 edges,13.832406834997983,3,0.003142382833623924,-0.0026596418348995288
+Strict no-grade/no-IDH baseline,Strict no-grade/no-IDH + Phase1 edges,15.539562228019804,3,0.0014090665781129124,-0.0035968489576736484
+Clinical + molecular,Clinical + molecular + Phase2 edges [reference_bio_constrained_lowrisk],9.370720340592925,3,0.02474720574918628,0.0010891866561969499
+Clinical + molecular,Clinical + molecular + Phase2 edges [reference_ridge_lowrisk],6.666187472638285,3,0.08333391601518098,0.0006585779781655976
+Clinical + molecular,Clinical + molecular + Phase2 edges [identity_projection],1.2013293578033881,3,0.7526854944227229,-0.0032675599685909607

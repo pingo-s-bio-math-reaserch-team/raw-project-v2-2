@@ -1,0 +1,22 @@
+model,endpoint,predictors,n,AUROC_orientation_free
+bio_constrained_nonnegative,24m death,SRIS only,419,0.5164609053497943
+bio_constrained_nonnegative,24m death,age only,419,0.852155817433595
+bio_constrained_nonnegative,24m death,age + SRIS,419,0.8525766928544706
+identity_projection,24m death,SRIS only,419,0.5469509913954358
+identity_projection,24m death,age only,419,0.852155817433595
+identity_projection,24m death,age + SRIS,419,0.8523896371118593
+random_projection,24m death,SRIS only,419,0.6186167227833894
+random_projection,24m death,age only,419,0.852155817433595
+random_projection,24m death,age + SRIS,419,0.8578376356154135
+reference_bio_constrained_lowrisk,24m death,SRIS only,419,0.571572203516648
+reference_bio_constrained_lowrisk,24m death,age only,419,0.852155817433595
+reference_bio_constrained_lowrisk,24m death,age + SRIS,419,0.8560372240927797
+reference_ridge_lowrisk,24m death,SRIS only,419,0.658062102506547
+reference_ridge_lowrisk,24m death,age only,419,0.852155817433595
+reference_ridge_lowrisk,24m death,age + SRIS,419,0.8622100635989525
+ridge_unconstrained,24m death,SRIS only,419,0.516110175832398
+ridge_unconstrained,24m death,age only,419,0.852155817433595
+ridge_unconstrained,24m death,age + SRIS,419,0.8525766928544706
+shuffled_target_ridge,24m death,SRIS only,419,0.664188178077067
+shuffled_target_ridge,24m death,age only,419,0.852155817433595
+shuffled_target_ridge,24m death,age + SRIS,419,0.8549616535727647

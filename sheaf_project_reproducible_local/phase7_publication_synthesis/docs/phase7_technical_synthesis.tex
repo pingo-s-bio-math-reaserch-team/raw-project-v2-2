@@ -1,0 +1,253 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs,array,longtable}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{float}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\title{Phase 7 Technical Synthesis: Publication-Grade Evidence Ledger for Sheaf-Theoretic Glioma Multi-Omics}
+\author{Sheaf-Theoretic Multi-Omics Project}
+\date{May 2026}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Purpose of Phase 7}
+Phase 7 is the integrative publication-readiness phase. Phases 1--6 produced a sequence of sheaf-based objects: a patient-level sheaf inconsistency score, learned restriction maps, survival validation, subtype-specific sheaf Laplacians, optimal-transport-calibrated sheaf stability, and consensus sheaf discovery. Phase 7 asks a different question:
+\[
+\text{Which claims are supported, by which evidence, and at what strength?}
+\]
+The purpose is not to overstate performance. The purpose is to create a rigorous bridge from technical experiments to a defensible IEEE BIBM-style manuscript.
+
+\section{Integrated Mathematical Objects}
+\subsection{Base sheaf residual framework}
+Each patient $p$ is represented by three node states:
+\[
+    x_D(p),\qquad x_R(p),\qquad x_C(p),
+\]
+corresponding to genomic, regulatory, and tumor-phenotype states. A sheaf edge $u\to v$ has a restriction map $W_{uv}$ and residual
+\[
+    r_{uv}(p)=W_{uv}x_u(p)-x_v(p).
+\]
+The induced sheaf energy is
+\[
+    \operatorname{SRIS}(p)=\sum_{u\to v}\|r_{uv}(p)\|_2^2=x_p^T L_{\mathcal F}x_p,
+\]
+where $L_{\mathcal F}=B_{\mathcal F}^T B_{\mathcal F}$ is the sheaf Laplacian.
+
+\subsection{Subtype-specific counterfactual sheaves}
+For a biological group $g$, Phase 4 learns a group-specific Laplacian $L_g$ and counterfactual energy
+\[
+    E_g(p)=x_p^T L_gx_p.
+\]
+A patient can then be scored under all group laws, and group geometry can be compared by
+\[
+    \Delta(g,h)=\|L_g-L_h\|_F.
+\]
+
+\subsection{Transport-calibrated sheaf stability}
+Phase 5 defines a sheaf signature vector $s(p)$ and an entropic optimal-transport plan $\Gamma^{\star}_{A,B}$ between groups $A$ and $B$. The transport sheaf discrepancy is
+\[
+    \operatorname{TSD}(A,B)=\sum_{i\in A}\sum_{j\in B}\Gamma^{\star}_{ij}\|s(p_i)-s(q_j)\|_2.
+\]
+This tests whether biological groups remain separated after distributional alignment.
+
+\subsection{Consensus sheaf discovery}
+Phase 6 ranks features using a Consensus Sheaf Discovery Score. A feature $f$ is scored by stability, association strength, FDR-controlled significance, and transport stability:
+\[
+    \operatorname{CSDS}(f)=
+    \pi_f\cdot e_f\cdot (1-q_f)\cdot \tau_f,
+\]
+where $\pi_f$ is selection frequency, $e_f$ is normalized effect size, $q_f$ is the FDR-adjusted value, and $\tau_f$ is the transport-stability weight.
+
+\section{Phase 7 Evidence-Weighted Contribution Score}
+To avoid overclaiming, Phase 7 separates six dimensions:
+\[
+M=\text{mechanistic novelty},\quad
+V=\text{validation strictness},\quad
+P=\text{predictive gain},
+\]
+\[
+R=\text{robustness},\quad
+I=\text{interpretability},\quad
+E=\text{external validation}.
+\]
+The evidence-weighted score is
+\[
+\operatorname{EWS}=10(0.20M+0.20V+0.18P+0.16R+0.16I+0.10E).
+\]
+The external-validation term is currently set to zero because the work so far uses an internal TCGA-style dataset. This prevents unsupported claims of clinical state-of-the-art superiority.
+
+\section{Integrated Performance Evidence}
+\subsection{Best positive internal metric deltas}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllrl}
+\toprule
+phase & task & metric & delta & method \\
+\midrule
+Phase 4 & grade\_label & accuracy & 0.0786 & hybrid\_logistic\_features\_plus\_sheaf\_energies \\
+Phase 4 & grade\_label & macro\_f1 & 0.0566 & hybrid\_logistic\_features\_plus\_sheaf\_energies \\
+Phase 4 & grade\_label & balanced\_accuracy & 0.0484 & hybrid\_logistic\_features\_plus\_sheaf\_energies \\
+Phase 4 & grade4\_status & balanced\_accuracy & 0.0131 & hybrid\_logistic\_features\_plus\_sheaf\_energies \\
+Phase 6 & grade\_label & weighted\_auroc & 0.0087 & baseline\_plus\_phase6\_candidates\_vs\_baseline \\
+Phase 5 & grade\_label & macro\_auroc & 0.0075 & baseline\_plus\_sheaf\_and\_transport \\
+Phase 6 & grade4\_status & macro\_f1 & 0.0073 & baseline\_plus\_phase6\_candidates\_vs\_baseline \\
+Phase 5 & idh\_codel\_subtype & accuracy & 0.0072 & baseline\_plus\_phase5\_transport\_features \\
+\bottomrule
+\end{tabular}
+
+\caption{Best positive internal metric deltas across Phases 3--6. These are internal cross-validation or held-out-fold deltas, not external-cohort results.}
+\end{table}
+
+\subsection{Permutation evidence}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lllrr}
+\toprule
+phase & task & protocol & z\_score & p\_value \\
+\midrule
+Phase 5 & grade4\_status & strict\_no\_grade\_no\_clusters & 19.7438 & 0.0099 \\
+Phase 5 & grade\_label & strict\_no\_idh\_no\_grade\_no\_clusters & 10.9463 & 0.0099 \\
+Phase 4 & idh\_codel\_subtype & strict\_no\_idh\_no\_clusters & 9.1969 & 0.0099 \\
+Phase 4 & idh\_codel\_subtype & full\_geometry & 8.8939 & 0.0099 \\
+Phase 5 & idh\_codel\_subtype & strict\_no\_idh\_no\_grade\_no\_clusters & 6.1118 & 0.0099 \\
+Phase 4 & grade4\_status & strict\_no\_grade\_no\_clusters & 5.7950 & 0.0099 \\
+Phase 4 & grade\_label & strict\_no\_grade\_no\_clusters & 5.0807 & 0.0099 \\
+\bottomrule
+\end{tabular}
+
+\caption{Permutation evidence that sheaf geometries or transport gaps are non-random under internal label/control permutations.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{../figures/phase7_permutation_evidence_zscores.png}
+\caption{Permutation z-scores for Phase 4 Laplacian divergence and Phase 5 transport sheaf gaps.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{../figures/phase7_best_positive_deltas.png}
+\caption{Best positive internal metric deltas across tasks and metrics.}
+\end{figure}
+
+\section{State-of-the-Art Contribution Matrix}
+The central state-of-the-art improvement is not a claim that the current internal model dominates every clinical endpoint. The stronger and more defensible claim is that the project creates a new \emph{regulatory inconsistency geometry} for glioma multi-omics: sheaf residuals measure local-to-global contradiction rather than merely aggregating features over a graph.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llrl}
+\toprule
+contribution\_id & name & evidence\_weighted\_score\_0\_10 & claim\_tier \\
+\midrule
+C1 & Sheaf Regulatory Inconsistency Score (SRIS) & 5.99 & Exploratory contribution \\
+C2 & Learned/reference biological restriction maps & 6.06 & Moderate internal contribution \\
+C3 & Subtype-specific counterfactual sheaf geometry & 6.92 & Moderate internal contribution \\
+C4 & Transport-Calibrated Sheaf Stability & 7.08 & Strong internal contribution \\
+C5 & Consensus Sheaf Discovery and Reliability & 7.16 & Strong internal contribution \\
+C6 & Publication-grade claim calibration layer & 6.62 & Moderate internal contribution \\
+\bottomrule
+\end{tabular}
+
+\caption{Evidence-weighted contribution matrix. Scores summarize internal support and are capped conceptually by the absence of external validation.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{../figures/phase7_contribution_matrix_heatmap.png}
+\caption{Dimension-level contribution evidence for each technical contribution.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{../figures/phase7_claim_readiness_scores.png}
+\caption{Internal claim readiness scores before external validation.}
+\end{figure}
+
+\section{Consensus Feature Reliability}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+feature & task\_count & max\_CSDS & mean\_CSDS & min\_q\_value \\
+\midrule
+bio\_dist\_to\_\_1 & 1 & 0.6098 & 0.6098 & 0.0463 \\
+bio\_dist\_to\_\_IDHmut-non-codel & 1 & 0.6007 & 0.6007 & 0.0256 \\
+bio\_dist\_to\_\_G4 & 1 & 0.5953 & 0.5953 & 0.0267 \\
+p\_sheaf\_\_G4 & 2 & 0.5639 & 0.5357 & 0.0267 \\
+p\_sheaf\_\_G2G3 & 1 & 0.5639 & 0.5639 & 0.0463 \\
+p\_sheaf\_\_IDHwt & 1 & 0.5167 & 0.5167 & 0.0256 \\
+bio\_dist\_to\_\_0 & 1 & 0.4707 & 0.4707 & 0.0463 \\
+transport\_margin & 3 & 0.4356 & 0.2642 & 0.0256 \\
+\bottomrule
+\end{tabular}
+
+\caption{Top cross-task consensus features. High CSDS indicates stable, significant, and transport-aware sheaf evidence.}
+\end{table}
+
+\section{Manuscript Claim Ledger}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+claim\_id & status & claim \\
+\midrule
+Safe-1 & safe & We introduce a biologically constrained cellular-sheaf framework for glioma multi-omics inconsistency. \\
+Safe-2 & safe internal & Subtype and grade groups exhibit statistically non-random sheaf Laplacian geometry under internal permutation tests. \\
+Safe-3 & safe internal & Sheaf residual signatures exhibit non-random OT-calibrated transport gaps between biological groups. \\
+Safe-4 & safe internal & Consensus sheaf features add measurable strict grade-classification signal in internal cross-validation. \\
+Caution-1 & caution & The framework improves survival prediction over clinical-molecular baselines. \\
+Unsafe-1 & not supported yet & The method is state of the art for glioma survival prediction. \\
+Unsafe-2 & false & This is the first use of sheaves in machine learning. \\
+\bottomrule
+\end{tabular}
+
+\caption{Claim ledger separating safe, cautious, and unsupported statements.}
+\end{table}
+
+\section{Generalized Improvements Over Standard Approaches}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{From feature fusion to inconsistency geometry.} Standard multi-omics pipelines often concatenate features or propagate them through graph layers. This framework defines residuals against explicit biological consistency laws.
+\item \textbf{From one global model to group-specific biological laws.} Phase 4 learns a sheaf Laplacian per subtype or grade group, allowing direct comparison of learned regulatory geometries.
+\item \textbf{From raw distribution alignment to sheaf-residual transport.} Phase 5 uses optimal transport on sheaf residual signatures, testing whether group differences persist under distributional matching.
+\item \textbf{From importance scores to reliability-ranked residual biomarkers.} Phase 6 combines stability selection, FDR, effect sizes, and transport stability into a reliability score.
+\item \textbf{From overclaiming to claim calibration.} Phase 7 formalizes what is safe to claim internally and what still requires external validation.
+\end{enumerate}
+
+\section{Current Honest State-of-the-Art Claim}
+The accurate state-of-the-art statement is:
+\begin{quote}
+We introduce a biologically constrained cellular-sheaf framework for glioma multi-omics that converts genomic, regulatory, and phenotype variables into interpretable sheaf residual energies. The framework provides non-random subtype/grade sheaf geometries, OT-calibrated sheaf stability, and reliability-ranked residual signatures that add measurable strict grade-prediction signal in internal validation. External validation is still required before claiming clinical state-of-the-art survival prediction.
+\end{quote}
+
+\section{External Validation Plan}
+The next required step is TCGA-to-CGGA or equivalent held-out cohort validation. The external cohort must support harmonized patient identifiers, subtype labels, survival time/censoring, genomic variables, regulatory variables, and phenotype variables. The validation endpoints should be:
+\[
+\Delta \text{balanced accuracy},\quad \Delta \text{macro-F1},\quad \Delta \text{AUROC},\quad \Delta C\text{-index},
+\]
+plus transport-sheaf stability and preservation of top CSDS-ranked features.
+
+\section{References}
+Graph ML has become a major approach for integrated multi-omics analysis, but much of the literature focuses on representation learning, attention, or graph aggregation. Cellular sheaf methods provide restriction maps and sheaf Laplacians for relation-specific geometry. Optimal transport is widely used for alignment in omics contexts. This project combines these directions specifically to quantify regulatory inconsistency in glioma.
+
+\begin{thebibliography}{9}
+\bibitem{valous2024} N. A. Valous et al., ``Graph machine learning for integrated multi-omics analysis,'' \emph{British Journal of Cancer}, 2024.
+\bibitem{bodnar2022} C. Bodnar et al., ``Neural Sheaf Diffusion: A Topological Perspective on Heterophily and Oversmoothing in GNNs,'' NeurIPS, 2022.
+\bibitem{barbero2022} F. Barbero et al., ``Sheaf Neural Networks with Connection Laplacians,'' TMLR, 2022.
+\bibitem{otomics2024} Nature Methods/Protocols literature on optimal transport for single-cell and spatial omics, 2024.
+\end{thebibliography}
+
+\end{document}

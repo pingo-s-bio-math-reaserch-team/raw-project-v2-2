@@ -1,0 +1,7 @@
+criterion,status,action
+External validation,Not complete until CGGA/raw external files are added,Run src/cgga_schema_adapter.py then src/run_external_validation.py
+No leakage,Partially addressed internally,Keep age/status/survival out of SRIS; use strict no-grade/no-IDH protocols for label tasks
+Benchmark strength,Needs external baselines,Run Cox/elastic net/RSF/XGBoost/GCN/GAT/our sheaf on same splits
+Biological discovery,Needs gene/pathway sheaf,Build regulatory_edges.csv and pathway_membership.csv; compute pathway SRIS
+Claim safety,"Manuscript can claim method novelty, not clinical SOTA yet",Use claim ledger and update after external results
+BIBM formatting,Template prepared; final paper should be double-blind IEEE format,Use manuscript/IEEE_BIBM_skeleton.tex

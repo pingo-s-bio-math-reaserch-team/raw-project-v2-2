@@ -1,0 +1,102 @@
+{
+  "n_lockbox_metrics": 18,
+  "tasks": [
+    "grade4_status",
+    "grade_label",
+    "idh_codel_subtype"
+  ],
+  "best_positive_deltas": [
+    {
+      "task": "grade_label",
+      "metric": "macro_f1",
+      "best_model": "baseline_plus_all_sheaf",
+      "baseline_value": 0.5470929640566133,
+      "best_value": 0.7714695340501793,
+      "delta": 0.22437656999356592,
+      "n_test": 105
+    },
+    {
+      "task": "grade_label",
+      "metric": "balanced_accuracy",
+      "best_model": "baseline_plus_all_sheaf",
+      "baseline_value": 0.5613459879206212,
+      "best_value": 0.7650618349151568,
+      "delta": 0.2037158469945356,
+      "n_test": 105
+    },
+    {
+      "task": "grade_label",
+      "metric": "accuracy",
+      "best_model": "baseline_plus_all_sheaf",
+      "baseline_value": 0.6571428571428571,
+      "best_value": 0.8476190476190476,
+      "delta": 0.19047619047619047,
+      "n_test": 105
+    },
+    {
+      "task": "grade_label",
+      "metric": "auroc",
+      "best_model": "baseline_plus_all_sheaf",
+      "baseline_value": 0.8249677841538305,
+      "best_value": 0.9411756266988826,
+      "delta": 0.11620784254505201,
+      "n_test": 105
+    },
+    {
+      "task": "grade4_status",
+      "metric": "auroc",
+      "best_model": "baseline_plus_phase1_sris_edges",
+      "baseline_value": 0.9549180327868853,
+      "best_value": 0.9821162444113264,
+      "delta": 0.027198211624441138,
+      "n_test": 105
+    },
+    {
+      "task": "grade4_status",
+      "metric": "auprc",
+      "best_model": "baseline_plus_phase1_sris_edges",
+      "baseline_value": 0.9663649536768555,
+      "best_value": 0.9878677650089546,
+      "delta": 0.02150281133209908,
+      "n_test": 105
+    },
+    {
+      "task": "grade4_status",
+      "metric": "accuracy",
+      "best_model": "baseline_plus_phase1_sris_edges",
+      "baseline_value": 0.8761904761904762,
+      "best_value": 0.8952380952380953,
+      "delta": 0.01904761904761909,
+      "n_test": 105
+    },
+    {
+      "task": "grade4_status",
+      "metric": "macro_f1",
+      "best_model": "baseline_plus_phase1_sris_edges",
+      "baseline_value": 0.8750572082379863,
+      "best_value": 0.8938516680452164,
+      "delta": 0.018794459807230157,
+      "n_test": 105
+    },
+    {
+      "task": "grade4_status",
+      "metric": "balanced_accuracy",
+      "best_model": "baseline_plus_phase1_sris_edges",
+      "baseline_value": 0.8839418777943369,
+      "best_value": 0.9003353204172876,
+      "delta": 0.016393442622950727,
+      "n_test": 105
+    },
+    {
+      "task": "idh_codel_subtype",
+      "metric": "auroc",
+      "best_model": "baseline_plus_phase6_consensus_index",
+      "baseline_value": 0.9801279970705482,
+      "best_value": 0.9826612030725954,
+      "delta": 0.002533206002047206,
+      "n_test": 104
+    }
+  ],
+  "external_cgga_results_generated": false,
+  "reason_external_not_generated": "CGGA raw clinical/multi-omics files were not present in the workspace."
+}
