@@ -1,0 +1,111 @@
+node_id,node_name,node_type,glioma_role,frequency_LGG,frequency_GBM,canonical_subtype_association,evidence_citation,pmid,notes
+N001,IDH1,gene,driver_gain_of_aberrant_activity,~70-80%,~5%,defines IDH-mutant gliomas,Yan 2009 NEJM,19228619,R132H dominant mutation
+N002,IDH2,gene,driver,~3-5%,rare,defines IDH-mutant gliomas,Yan 2009 NEJM,19228619,R172 hotspot
+N003,TP53,gene,tumor_suppressor,~30-40% (esp IDHmut-noncodel),~30%,IDHmut-noncodel astrocytoma; Proneural GBM,TCGA glioma 2015 NEJM,26061751,Mutations cluster in DNA-binding domain
+N004,ATRX,gene,tumor_suppressor_chromatin,~70% in IDHmut-noncodel,~10%,IDHmut-noncodel astrocytoma,Heaphy 2011 Science,21719641,Loss enables ALT
+N005,DAXX,gene,tumor_suppressor_chromatin,rare,rare,partners with ATRX,Heaphy 2011 Science,21719641,
+N006,CIC,gene,tumor_suppressor,~50-80% of IDHmut-codel,rare,IDHmut-codel oligodendroglioma,Bettegowda 2011 Science,21817013,Mutated on remaining allele post 1p loss
+N007,FUBP1,gene,tumor_suppressor,~25% of IDHmut-codel,rare,IDHmut-codel oligodendroglioma,Bettegowda 2011 Science,21817013,
+N008,CDKN2A,gene,tumor_suppressor,~10% (defines high-risk IDHmut),~50%,IDHwt GBM; high-risk IDHmut astrocytoma,Shirahata 2018 Acta Neuropathol,30143891,Encodes p14ARF AND p16INK4A; CDKN2A/B HD now WHO 2021 high-grade IDHmut criterion
+N009,CDKN2B,gene,tumor_suppressor,co-deleted with CDKN2A,co-deleted with CDKN2A,IDHwt GBM,Brennan 2013 Cell,24120142,
+N010,RB1,gene,tumor_suppressor,rare,~10%,IDHwt GBM,Brennan 2013 Cell,24120142,
+N011,PTEN,gene,tumor_suppressor,~5%,~30% mutated; near-100% Chr10 loss,IDHwt GBM (Classical/Mesenchymal),Brennan 2013 Cell,24120142,
+N012,NF1,gene,tumor_suppressor,~5%,~10%,Mesenchymal GBM,Verhaak 2010 Cancer Cell,20129251,
+N013,EGFR,gene,oncogene,rare,~40% amplified; ~25% EGFRvIII,Classical GBM,Brennan 2013 Cell,24120142,Co-occurs with Chr7 gain
+N014,PDGFRA,gene,oncogene,rare,~10% amplified,Proneural GBM,Brennan 2013 Cell,24120142,
+N015,MET,gene,oncogene,rare,~5% amplified,GBM,Brennan 2013 Cell,24120142,
+N016,FGFR1,gene,oncogene,rare,~3%,pediatric/some adult,Brennan 2013 Cell,24120142,
+N017,PIK3CA,gene,oncogene,~5%,~10%,both,Brennan 2013 Cell,24120142,Hot-spot activating mutations
+N018,PIK3R1,gene,oncogene,~5%,~10%,both,Brennan 2013 Cell,24120142,
+N019,MDM2,gene,oncogene,rare,~7% amplified,IDHwt GBM,Brennan 2013 Cell,24120142,
+N020,MDM4,gene,oncogene,rare,~7% amplified,IDHwt GBM,Brennan 2013 Cell,24120142,
+N021,PPM1D,gene,oncogene_negative_p53_regulator,rare adult,rare adult,brainstem glioma association,Zhang 2014 Nat Genet,24880341,
+N022,BRAF,gene,oncogene,rare adult (V600E),rare adult,pediatric LGG predominantly,Schindler 2011 Acta Neuropathol,21229346,V600E targetable
+N023,KRAS,gene,oncogene,rare,rare,,Brennan 2013 Cell,24120142,
+N024,CDK4,gene,oncogene,rare,~15% amplified,IDHwt GBM,Brennan 2013 Cell,24120142,
+N025,CDK6,gene,oncogene,rare,~5% amplified,IDHwt GBM,Brennan 2013 Cell,24120142,
+N026,MYC,TF,oncogenic_TF,downstream activation,downstream activation,Proneural,Verhaak 2010 Cancer Cell,20129251,
+N027,HIF1A,TF,oncogenic_TF,low,high in necrotic regions,IDHwt GBM,Brennan 2013 Cell,24120142,Hypoxia response
+N028,STAT3,TF,oncogenic_TF,low,high,Mesenchymal GBM,Carro 2010 Nature,20032975,Master regulator of MES subtype
+N029,CEBPB,TF,oncogenic_TF,low,high,Mesenchymal GBM,Carro 2010 Nature,20032975,Co-master with STAT3
+N030,NFKB,TF,oncogenic_TF,low,high,Mesenchymal GBM,Bhat 2013 Cancer Cell,23993863,
+N031,SOX2,TF,stemness_TF,present,present in stem cell pool,both,Suva 2014 Cell,24561514,
+N032,OLIG2,TF,lineage_TF,high in IDHmut,high in PN GBM,Proneural; IDHmut,Ligon 2004 Neuron,15003170,Defines proneural lineage
+N033,ASCL1,TF,lineage_TF,present,present in PN,Proneural,Park 2017 Genes Dev,28931760,
+N034,FOXM1,TF,proliferation_TF,low,high,both,Wierstra 2007 Adv Cancer Res,17613303,Master proliferation regulator
+N035,YAP1,TF,Hippo_effector_TF,present,upregulated,GBM stem cells,Bhat 2011 Genes Dev,21701053,
+N036,EZH2,TF,polycomb_TF,present in stem pool,present in stem pool,glioma stem cells,Suva 2009 Cancer Res,19258506,H3K27 methyltransferase
+N037,SUZ12,gene,polycomb_complex,rare,rare,rare glioma,Sturm 2012 Cancer Cell,22980975,PRC2 component
+N038,SETD2,gene,chromatin_remodeler,rare adult,rare adult,pediatric high-grade,Sturm 2012 Cancer Cell,22980975,H3K36 methyltransferase
+N039,H3F3A_K27M,gene_variant,defining_mutation,rare,rare in adult,pediatric DMG,Sturm 2012 Cancer Cell,22980975,Defines DMG (WHO 2021 entity)
+N040,H3F3A_G34,gene_variant,defining_mutation,rare,rare,pediatric/young adult hemispheric,Sturm 2012 Cancer Cell,22980975,
+N041,NOTCH1,gene,context_dependent_tumor_suppressor,rare,~5%,GBM,Yuan 2010 Sci Signal,20570920,
+N042,Chr7_gain,CNV,defining_alteration,rare,~80%,IDHwt GBM,Brennan 2013 Cell; WHO 2021,24120142; 34185076,Defining for IDHwt GBM in WHO 2021
+N043,Chr10_loss,CNV,defining_alteration,rare,~80%,IDHwt GBM,Brennan 2013 Cell; WHO 2021,24120142; 34185076,Often combined Chr7+/Chr10-
+N044,Chr9p21_loss,CNV,driver_alteration,~10% in IDHmut,~50%,IDHwt GBM,Brennan 2013 Cell,24120142,Contains CDKN2A/B
+N045,Chr13q_loss,CNV,driver_alteration,rare,~10%,IDHwt GBM,Brennan 2013 Cell,24120142,Contains RB1
+N046,Chr17p_loss,CNV,driver_alteration,~30% IDHmut-noncodel,~30%,IDHmut-noncodel; some GBM,Brennan 2013 Cell,24120142,Contains TP53
+N047,EGFR_amplification,CNV,driver_focal_amp,rare,~40%,Classical GBM,Brennan 2013 Cell,24120142,
+N048,PDGFRA_amplification,CNV,driver_focal_amp,rare,~10%,Proneural GBM,Brennan 2013 Cell,24120142,
+N049,MET_amplification,CNV,driver_focal_amp,rare,~5%,GBM,Brennan 2013 Cell,24120142,
+N050,MDM2_amplification,CNV,driver_focal_amp,rare,~7%,IDHwt GBM,Brennan 2013 Cell,24120142,
+N051,MDM4_amplification,CNV,driver_focal_amp,rare,~7%,IDHwt GBM,Brennan 2013 Cell,24120142,
+N052,CDK4_amplification,CNV,driver_focal_amp,rare,~15%,IDHwt GBM,Brennan 2013 Cell,24120142,
+N053,CDK6_amplification,CNV,driver_focal_amp,rare,~5%,IDHwt GBM,Brennan 2013 Cell,24120142,
+N054,1p_loss,CNV,defining_alteration,~30-50% (codel),rare,IDHmut-codel oligodendroglioma,Brat 2015 NEJM,26061751,Half of 1p/19q codeletion
+N055,19q_loss,CNV,defining_alteration,~30-50% (codel),rare,IDHmut-codel oligodendroglioma,Brat 2015 NEJM,26061751,
+N056,MGMT_promoter,gene,predictive_biomarker,~30%,~30-50% methylated,both (predictive),Hegi 2005 NEJM,15758010,Methylation predicts TMZ response
+N057,CDKN2A_promoter,gene,silenced_TS_alternative_route,present in some,present in some,both,Esteller 2001 NEJM,11556297,
+N058,RASSF1A_promoter,gene,silenced_TS,present,present,both,Hesson 2007 Mol Cancer,17640392,
+N059,TIMP3_promoter,gene,silenced_stromal_regulator,present,present,both,Bachman 1999 Cancer Res,10074518,
+N060,TERT_promoter,gene,driver_promoter_mutation,~30-40% (codel ~95%),~80%,IDHmut-codel; IDHwt GBM,Killela 2013 PNAS,23530239,C228T and C250T hotspots
+N061,miR-21,miRNA,oncogenic_miRNA,upregulated,highly upregulated,both,Chan 2005 Cancer Res,15994929,Targets PTEN
+N062,miR-10b,miRNA,oncogenic_miRNA,low,upregulated,IDHwt GBM,Gabriely 2011 Cancer Res,21750178,Promotes invasion
+N063,miR-128,miRNA,tumor_suppressor_miRNA,downregulated,downregulated,both,Godlewski 2008 Cancer Res,18922887,
+N064,miR-181a,miRNA,tumor_suppressor_miRNA,downregulated,downregulated,both,Shi 2008 Brain Res,18164284,Targets BCL2
+N065,miR-34a,miRNA,tumor_suppressor_miRNA,downregulated,downregulated,both,Li 2009 Cancer Res,19435942,p53-target
+N066,miR-7,miRNA,tumor_suppressor_miRNA,downregulated,downregulated,both,Webster 2009 J Biol Chem,19318319,Targets EGFR
+N067,miR-26a,miRNA,oncogenic_miRNA,amplified,amplified,GBM,Huse 2009 Genes Dev,19451218,Targets PTEN; locus amplified
+N068,IDH_2HG_metabolism,pathway,driver_pathway,active in IDHmut,active in IDHmut,IDHmut tumors,Noushmehr 2010 Cancer Cell,20399149,
+N069,G_CIMP_hypermethylation,pathway,driver_pathway,active in IDHmut,active in IDHmut,IDHmut tumors,Noushmehr 2010 Cancer Cell,20399149,
+N070,DNA_damage_repair,pathway,treatment_response_pathway,MGMT-dependent,MGMT-dependent,both,Hegi 2005 NEJM,15758010,Critical for TMZ response
+N071,RTK_RAS_PI3K_pathway,pathway,oncogenic_pathway,less common,~90% altered,IDHwt GBM,Brennan 2013 Cell,24120142,Core GBM pathway
+N072,PI3K_AKT_mTOR_pathway,pathway,oncogenic_pathway,uncommon,common,IDHwt GBM,Brennan 2013 Cell,24120142,
+N073,MAPK_pathway,pathway,oncogenic_pathway,rare adult,Mesenchymal-enriched,Mesenchymal GBM,Verhaak 2010 Cancer Cell,20129251,
+N074,p53_pathway,pathway,tumor_suppressor_pathway,~30-40% altered,~90% altered,both,Brennan 2013 Cell,24120142,Multiple inactivation routes
+N075,RB1_pathway,pathway,tumor_suppressor_pathway,~10%,~80% altered,IDHwt GBM,Brennan 2013 Cell,24120142,
+N076,Apoptosis_pathway,pathway,tumor_suppressor_pathway,partially intact,inactivated,both,Hanahan 2011 Cell,21376230,
+N077,Telomere_maintenance_pathway,pathway,driver_pathway,active (TERT or ALT),~80% TERT,both,Killela 2013 PNAS,23530239,Bimodal mechanism
+N078,ALT_telomere_maintenance,pathway,driver_pathway,IDHmut-noncodel (~70%),rare,IDHmut-noncodel astrocytoma,Heaphy 2011 Science,21719641,Driven by ATRX loss
+N079,Angiogenesis_pathway,pathway,microenvironment_pathway,low,high (necrosis-driven),IDHwt GBM,Brennan 2013 Cell,24120142,VEGFA/HIF1A axis
+N080,Mesenchymal_transcription_program,pathway,oncogenic_pathway,rare,Mesenchymal GBM,Mesenchymal GBM,Carro 2010 Nature; Wang 2017 Cancer Cell,20032975; 28697342,STAT3/CEBPB/NFKB
+N081,Proneural_transcription_program,pathway,lineage_pathway,IDHmut-codel/noncodel,Proneural GBM,Proneural; IDHmut,Verhaak 2010 Cancer Cell,20129251,OLIG2/ASCL1
+N082,Stemness_pathway,pathway,stemness_pathway,present,present,both,Suva 2014 Cell,24561514,
+N083,Chromatin_remodeling_pathway,pathway,epigenetic_pathway,low,low (some pediatric),pediatric/H3-mutant,Sturm 2012 Cancer Cell,22980975,
+N084,Polycomb_repressive_complex,pathway,epigenetic_pathway,present,present,both,Suva 2009 Cancer Res,19258506,
+N085,NOTCH_signaling_pathway,pathway,context_dependent_pathway,variable,variable,context dependent,Yuan 2010 Sci Signal,20570920,
+N086,Hippo_signaling_target_genes,pathway,oncogenic_pathway,low,upregulated in stem pool,GBM stem cells,Bhat 2011 Genes Dev,21701053,
+N087,VEGFA,gene,angiogenesis_driver,low,high,IDHwt GBM,Brennan 2013 Cell,24120142,Master angiogenic factor
+N088,Cell_cycle_phenotype,phenotype,proliferation_readout,grade-dependent,high,both,WHO 2021,34185076,Ki-67 LI clinical readout
+N089,Proliferation_phenotype,phenotype,proliferation_readout,grade-dependent,high,both,WHO 2021,34185076,
+N090,Genomic_instability_phenotype,phenotype,instability_readout,IDHmut-noncodel elevated,IDHwt elevated,both,TCGA glioma 2015 NEJM,26061751,Maps to Mutation_Count and Percent_aneuploidy variables
+N091,Transcriptome_subtype,phenotype,molecular_subtype,LGm clusters,PN/NE/CL/ME,both,Verhaak 2010 Cancer Cell; Ceccarelli 2016 Cell,20129251; 26771574,Already in TCGA dataset as variable
+N092,Pan_Glioma_DNA_methylation_cluster,phenotype,methylation_subtype,LGm1-6,LGm1-6,both,Ceccarelli 2016 Cell,26771574,Already in TCGA dataset as variable
+N093,Pan_Glioma_RNA_expression_cluster,phenotype,RNA_subtype,LGr1-4,LGr1-4,both,Ceccarelli 2016 Cell,26771574,Already in TCGA dataset as variable
+N094,IDH_specific_DNA_methylation_cluster,phenotype,IDH-stratified_methylation_subtype,present,present,IDHmut,Ceccarelli 2016 Cell,26771574,Already in TCGA dataset
+N095,IDH_specific_RNA_expression_cluster,phenotype,IDH-stratified_RNA_subtype,present,present,IDHmut,Ceccarelli 2016 Cell,26771574,Already in TCGA dataset
+N096,Neoplasm_histologic_grade,phenotype,severity_readout,G2/G3,G4,both,WHO 2021,34185076,Already in TCGA dataset
+N097,ESTIMATE_immune_score,phenotype,microenvironment_readout,lower,higher (esp Mesenchymal),both,Yoshihara 2013 Nat Commun,24113773,
+N098,ESTIMATE_stromal_score,phenotype,microenvironment_readout,lower,higher (esp Mesenchymal),both,Yoshihara 2013 Nat Commun,24113773,
+N099,ESTIMATE_combined_score,phenotype,microenvironment_readout,lower,higher,both,Yoshihara 2013 Nat Commun,24113773,Immune + stromal composite
+N100,Overall_survival,phenotype,outcome_variable_only,longer (IDHmut-codel best),shorter (IDHwt worst),both,Ceccarelli 2016 Cell,26771574,Outcome variable - do NOT include as regulatory-graph node; for prediction target only
+N101,EGFRvIII_variant,gene_variant,driver_constitutive_isoform,rare,~25% of EGFR-amp,Classical GBM,Brennan 2013 Cell,24120142,Exons 2-7 deletion
+N102,VEGFA_mRNA,gene,direct_angiogenic_factor,low,high,IDHwt GBM,Brennan 2013 Cell,24120142,
+N103,BCL2,gene,apoptosis_regulator,present,present,both,Shi 2008 Brain Res,18164284,miR-181a target
+N104,HOXD10,gene,invasion_regulator,present,downregulated,IDHwt GBM,Gabriely 2011 Cancer Res,21750178,miR-10b target
+N105,BMI1,gene,stemness_regulator,low,upregulated in stem pool,glioma stem cells,Godlewski 2008 Cancer Res,18922887,miR-128 target
+N106,MGMT,gene,DNA_repair_gene,present,often silenced,both,Hegi 2005 NEJM,15758010,Gene; promoter methylation status is the predictive biomarker (see N056)
+N107,TERT,gene,telomerase_catalytic_subunit,varies,often upregulated,IDHwt GBM and IDHmut-codel,Killela 2013 PNAS,23530239,Gene; promoter mutation drives expression (see N060)
+N108,RASSF1A,gene,tumor_suppressor,often silenced,often silenced,both,Hesson 2007 Mol Cancer,17640392,Gene; promoter methylation common
+N109,TIMP3,gene,stromal_regulator,often silenced,often silenced,both,Bachman 1999 Cancer Res,10074518,Gene; promoter methylation common
+N110,SPRY2,gene,RTK_negative_regulator,low,low,both,Chan 2005 Cancer Res,15994929,miR-21 target; negative feedback on MAPK signaling
