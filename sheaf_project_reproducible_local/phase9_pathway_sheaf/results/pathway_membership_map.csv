@@ -1,0 +1,63 @@
+node,source,n_observed,n_perturbed,perturbation_rate,note
+19q_loss,derived from idh_codel_subtype,420,55,0.131,IDHmut-codel = 1p/19q codeletion
+1p_loss,derived from idh_codel_subtype,420,55,0.131,IDHmut-codel = 1p/19q codeletion
+ALT_telomere_maintenance,team clinical + cBioPortal,420,169,0.402,ALT driven by ATRX loss-of-function
+ATRX,cBioPortal lgggbm_tcga_pub,420,77,0.183,mutated OR homozygously deleted
+BRAF,cBioPortal lgggbm_tcga_pub,420,6,0.014,mutated OR amplified
+CDK4,cBioPortal lgggbm_tcga_pub,420,51,0.121,mutated OR amplified
+CDK4_amplification,cBioPortal GISTIC,420,51,0.121,GISTIC == 2
+CDK6,cBioPortal lgggbm_tcga_pub,420,8,0.019,mutated OR amplified
+CDK6_amplification,cBioPortal GISTIC,420,8,0.019,GISTIC == 2
+CDKN2A,cBioPortal lgggbm_tcga_pub,420,161,0.383,mutated OR homozygously deleted
+CDKN2B,cBioPortal lgggbm_tcga_pub,420,156,0.371,mutated OR homozygously deleted
+CIC,cBioPortal lgggbm_tcga_pub,420,31,0.074,mutated OR homozygously deleted
+Cell_cycle_phenotype,team clinical (proxy: grade),420,343,0.817,
+Chr10_loss,team clinical,420,177,0.421,co-occurring Chr7+/Chr10-
+Chr13q_loss,cBioPortal GISTIC,420,7,0.017,proxy: RB1 homozygous deletion
+Chr17p_loss,cBioPortal GISTIC,420,3,0.007,proxy: TP53 homozygous deletion
+Chr7_gain,team clinical,420,177,0.421,co-occurring Chr7+/Chr10-
+Chr9p21_loss,cBioPortal GISTIC,420,160,0.381,proxy: CDKN2A homozygous deletion
+DAXX,cBioPortal lgggbm_tcga_pub,420,0,0.0,mutated OR homozygously deleted
+EGFR,cBioPortal lgggbm_tcga_pub,420,136,0.324,mutated OR amplified
+EGFR_amplification,cBioPortal GISTIC,420,124,0.295,GISTIC == 2
+EGFRvIII_variant,cBioPortal (proxy),420,124,0.295,weak proxy: EGFR amplification (vIII status not separately panel-typed here)
+ESTIMATE_immune_score,team clinical,420,122,0.29,above-median = perturbed
+ESTIMATE_stromal_score,team clinical,420,103,0.245,above-median = perturbed
+FGFR1,cBioPortal lgggbm_tcga_pub,420,1,0.002,mutated OR amplified
+FUBP1,cBioPortal lgggbm_tcga_pub,420,11,0.026,mutated OR homozygously deleted
+G_CIMP_hypermethylation,team clinical (proxy),420,156,0.371,G-CIMP-high tracks closely with IDH mutation
+Genomic_instability_phenotype,team clinical,420,210,0.5,above-median aneuploidy
+H3F3A_G34,cBioPortal,416,1,0.002,H3F3A any mutation (variant not resolved)
+H3F3A_K27M,cBioPortal,416,1,0.002,H3F3A any mutation (variant not resolved)
+IDH1,cBioPortal lgggbm_tcga_pub,420,132,0.314,mutated
+IDH2,cBioPortal lgggbm_tcga_pub,420,9,0.021,mutated
+IDH_2HG_metabolism,team clinical,420,156,0.371,aberrant activity = IDH mutation
+KRAS,cBioPortal lgggbm_tcga_pub,420,5,0.012,mutated OR amplified
+MDM2,cBioPortal lgggbm_tcga_pub,420,23,0.055,mutated OR amplified
+MDM2_amplification,cBioPortal GISTIC,420,23,0.055,GISTIC == 2
+MDM4,cBioPortal lgggbm_tcga_pub,420,29,0.069,mutated OR amplified
+MDM4_amplification,cBioPortal GISTIC,420,28,0.067,GISTIC == 2
+MET,cBioPortal lgggbm_tcga_pub,420,11,0.026,mutated OR amplified
+MET_amplification,cBioPortal GISTIC,420,8,0.019,GISTIC == 2
+MGMT_promoter,team clinical,420,246,0.586,1 = methylated (silenced)
+Mesenchymal_transcription_program,team clinical,420,84,0.2,Mesenchymal transcriptome subtype
+NF1,cBioPortal lgggbm_tcga_pub,420,28,0.067,mutated OR homozygously deleted
+NOTCH1,cBioPortal lgggbm_tcga_pub,420,19,0.045,mutated OR amplified
+Neoplasm_histologic_grade,team clinical,420,343,0.817,high grade (G3/G4) = perturbed
+PDGFRA,cBioPortal lgggbm_tcga_pub,420,38,0.09,mutated OR amplified
+PDGFRA_amplification,cBioPortal GISTIC,420,36,0.086,GISTIC == 2
+PIK3CA,cBioPortal lgggbm_tcga_pub,420,35,0.083,mutated OR amplified
+PIK3R1,cBioPortal lgggbm_tcga_pub,420,20,0.048,mutated OR amplified
+PPM1D,cBioPortal lgggbm_tcga_pub,420,4,0.01,mutated OR amplified
+PTEN,cBioPortal lgggbm_tcga_pub,420,75,0.179,mutated OR homozygously deleted
+Pan_Glioma_DNA_methylation_cluster,team clinical,420,420,1.0,cluster assigned
+Pan_Glioma_RNA_expression_cluster,team clinical,420,395,0.94,cluster assigned
+Proliferation_phenotype,team clinical (proxy: grade),420,343,0.817,
+Proneural_transcription_program,team clinical,420,127,0.302,Proneural transcriptome
+RB1,cBioPortal lgggbm_tcga_pub,420,14,0.033,mutated OR homozygously deleted
+SETD2,cBioPortal lgggbm_tcga_pub,420,7,0.017,mutated OR homozygously deleted
+SUZ12,cBioPortal lgggbm_tcga_pub,420,0,0.0,mutated OR homozygously deleted
+TERT_promoter,team clinical,420,356,0.848,promoter mutation status
+TP53,cBioPortal lgggbm_tcga_pub,420,118,0.281,mutated OR homozygously deleted
+Telomere_maintenance_pathway,team + cBioPortal,420,402,0.957,active = TERT promoter mut OR ATRX loss
+Transcriptome_subtype,team clinical,420,163,0.388,aggressive subtype (ME or CL)

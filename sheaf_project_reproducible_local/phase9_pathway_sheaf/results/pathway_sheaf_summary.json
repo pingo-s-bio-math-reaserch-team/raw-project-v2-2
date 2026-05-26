@@ -1,0 +1,51 @@
+{
+  "n_patients": 420,
+  "n_pathways_computed": 9,
+  "n_pathways_with_>=2_observed_members": 9,
+  "top_5_by_subtype_separation": [
+    {
+      "pathway": "IDH_2HG_metabolism",
+      "mean_plis": 0.16785714285714284,
+      "kw_subtype_p": 1.4935290232834144e-78,
+      "kw_grade_p": 1.393421718188809e-58,
+      "n_observed": 420
+    },
+    {
+      "pathway": "ALT_telomere_maintenance",
+      "mean_plis": 0.09166666666666666,
+      "kw_subtype_p": 1.4612841801812776e-52,
+      "kw_grade_p": 2.6352905844832698e-23,
+      "n_observed": 420
+    },
+    {
+      "pathway": "Transcriptome_subtype",
+      "mean_plis": 0.6180952380952381,
+      "kw_subtype_p": 6.656663854794109e-51,
+      "kw_grade_p": 8.067585939908813e-25,
+      "n_observed": 420
+    },
+    {
+      "pathway": "RB1_pathway",
+      "mean_plis": 0.1976190476190476,
+      "kw_subtype_p": 3.645120656951398e-30,
+      "kw_grade_p": 9.636021420136779e-20,
+      "n_observed": 420
+    },
+    {
+      "pathway": "p53_pathway",
+      "mean_plis": 0.14047619047619048,
+      "kw_subtype_p": 6.562917543898164e-36,
+      "kw_grade_p": 5.276161822357843e-10,
+      "n_observed": 420
+    }
+  ],
+  "node_coverage": 62,
+  "audit_rows": 62,
+  "outputs": {
+    "patient_pathway_plis": "pathway_sheaf_results.csv",
+    "ranked_pathways": "top_residual_pathways.csv",
+    "node_data_audit": "pathway_membership_map.csv",
+    "pathway_membership_detail": "pathway_membership_detail.csv",
+    "figure": "pathway_plis_by_subtype.png"
+  }
+}

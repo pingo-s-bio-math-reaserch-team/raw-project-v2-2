@@ -1,0 +1,105 @@
+edge_id,source,source_type,target,target_type,edge_type,direction,glioma_relevance,frequency_notes,evidence_citation,pmid,notes
+E001,IDH1,gene,IDH_2HG_metabolism,pathway,mutation_to_pathway,activates_aberrantly,both (defining LGG),~70-80% of LGG; R132H is dominant variant,Yan 2009 NEJM; TCGA glioma 2015 NEJM,19228619; 26061751,"IDH1 R132H produces D-2-hydroxyglutarate, inhibits alpha-KG-dependent demethylases"
+E002,IDH2,gene,IDH_2HG_metabolism,pathway,mutation_to_pathway,activates_aberrantly,LGG (rare in GBM),~3-5% of LGG; R172 variants,Yan 2009 NEJM,19228619,Same downstream effect as IDH1 mutation via D-2HG
+E003,IDH_2HG_metabolism,pathway,G_CIMP_hypermethylation,pathway,pathway_to_pathway,activates,both (IDHmut),Causes CpG island methylator phenotype,Noushmehr 2010 Cancer Cell,20399149,D-2HG blocks TET enzymes and Jumonji demethylases
+E004,G_CIMP_hypermethylation,pathway,Transcriptome_subtype,phenotype,pathway_to_phenotype,influences,both,IDHmut tumors are G-CIMP positive; predominantly Proneural,Ceccarelli 2016 Cell,26771574,Methylation reprograms transcriptional landscape
+E005,G_CIMP_hypermethylation,pathway,IDH_specific_DNA_methylation_cluster,phenotype,pathway_to_phenotype,defines,both (IDHmut),G-CIMP-high is the canonical IDHmut methylation profile,Noushmehr 2010 Cancer Cell; Ceccarelli 2016 Cell,20399149; 26771574,Maps to TCGA LGm clusters
+E006,G_CIMP_hypermethylation,pathway,Pan_Glioma_DNA_methylation_cluster,phenotype,pathway_to_phenotype,defines,both (IDHmut),Methylation cluster assignment driven by G-CIMP,Ceccarelli 2016 Cell,26771574,Maps to TCGA LGm clusters
+E007,MGMT_promoter,gene,MGMT_mRNA,gene,methylation_to_rna,silences,both (predictive),~30-50% of GBM are methylated,Hegi 2005 NEJM,15758010,Promoter CpG island methylation silences MGMT transcription
+E008,MGMT_mRNA,gene,DNA_damage_repair,pathway,tf_to_target,activates,both,MGMT removes O6-methylguanine adducts,Hegi 2005 NEJM,15758010,Loss of MGMT compromises repair of TMZ-induced lesions
+E009,DNA_damage_repair,pathway,Overall_survival,phenotype,pathway_to_phenotype,protects_when_compromised,both,Methylated MGMT predicts better TMZ response,Stupp 2009 Lancet Oncol; Hegi 2005 NEJM,19269895; 15758010,Treatment-response biomarker
+E010,CDKN2A_promoter,gene,CDKN2A_mRNA,gene,methylation_to_rna,silences,both,Alternative inactivation when not deleted,Esteller 2001 NEJM,11556297,
+E011,RASSF1A_promoter,gene,RASSF1A_mRNA,gene,methylation_to_rna,silences,both,Frequently methylated tumor suppressor,Hesson 2007 Mol Cancer,17640392,
+E012,TIMP3_promoter,gene,TIMP3_mRNA,gene,methylation_to_rna,silences,both,Stromal regulator silenced in glioma,Bachman 1999 Cancer Res,10074518,
+E013,Chr7_gain,CNV,EGFR_mRNA,gene,cnv_to_rna,upregulates,IDHwt GBM (~80%),Defining feature of IDHwt GBM,Brennan 2013 Cell; WHO 2021,24120142; 34185076,Chr7 contains EGFR; co-occurs with Chr10 loss
+E014,Chr10_loss,CNV,PTEN_mRNA,gene,cnv_to_rna,downregulates,IDHwt GBM,Chr10q contains PTEN; near-universal in IDHwt GBM,Brennan 2013 Cell,24120142,
+E015,Chr10_loss,CNV,MGMT_mRNA,gene,cnv_to_rna,downregulates,IDHwt GBM,MGMT is on Chr10q26.3; lost with Chr10,Brennan 2013 Cell,24120142,Mechanism overlap with methylation silencing
+E016,Chr9p21_loss,CNV,CDKN2A_mRNA,gene,cnv_to_rna,downregulates_homozygous,IDHwt GBM and high-risk IDHmut,Homozygous deletion is the dominant CDKN2A inactivation mechanism,Brennan 2013 Cell; Shirahata 2018 Acta Neuropathol,24120142; 30143891,
+E017,Chr9p21_loss,CNV,CDKN2B_mRNA,gene,cnv_to_rna,downregulates_homozygous,IDHwt GBM,Co-deleted with CDKN2A,Brennan 2013 Cell,24120142,
+E018,Chr13q_loss,CNV,RB1_mRNA,gene,cnv_to_rna,downregulates,IDHwt GBM,RB1 is on Chr13q14,Brennan 2013 Cell,24120142,
+E019,Chr17p_loss,CNV,TP53_mRNA,gene,cnv_to_rna,downregulates,IDHmut-noncodel and some GBM,TP53 is on Chr17p13.1,Brennan 2013 Cell,24120142,
+E020,EGFR_amplification,CNV,EGFR_mRNA,gene,cnv_to_rna,upregulates,IDHwt GBM (~40%),Focal amplification on top of Chr7 gain,Brennan 2013 Cell,24120142,Highly enriched in Classical subtype
+E021,EGFR_amplification,CNV,EGFRvIII_variant,gene,cnv_to_rna,produces_aberrant_isoform,IDHwt GBM (~25% of EGFR-amp),Constitutively active deletion variant,Brennan 2013 Cell,24120142,Exons 2-7 deletion creates ligand-independent receptor
+E022,PDGFRA_amplification,CNV,PDGFRA_mRNA,gene,cnv_to_rna,upregulates,Proneural GBM (~10%),Alternative RTK driver,Brennan 2013 Cell; Verhaak 2010 Cancer Cell,24120142; 20129251,
+E023,MET_amplification,CNV,MET_mRNA,gene,cnv_to_rna,upregulates,GBM (~5%),Less common RTK driver,Brennan 2013 Cell,24120142,
+E024,MDM2_amplification,CNV,MDM2_mRNA,gene,cnv_to_rna,upregulates,GBM (~7%),Alternative p53 inactivation route,Brennan 2013 Cell,24120142,
+E025,MDM4_amplification,CNV,MDM4_mRNA,gene,cnv_to_rna,upregulates,GBM (~7%),Alternative p53 inactivation route,Brennan 2013 Cell,24120142,
+E026,CDK4_amplification,CNV,CDK4_mRNA,gene,cnv_to_rna,upregulates,IDHwt GBM (~15%),Alternative RB1 pathway inactivation,Brennan 2013 Cell,24120142,
+E027,CDK6_amplification,CNV,CDK6_mRNA,gene,cnv_to_rna,upregulates,IDHwt GBM (~5%),,Brennan 2013 Cell,24120142,
+E028,1p_loss,CNV,CIC_mRNA,gene,cnv_to_rna,downregulates,IDHmut-codel oligodendroglioma,1p/19q codeletion is defining feature,Brat 2015 NEJM (TCGA LGG),26061751,CIC is on 1p; biallelic effect
+E029,19q_loss,CNV,FUBP1_mRNA,gene,cnv_to_rna,downregulates,IDHmut-codel oligodendroglioma,Combined with 1p loss = canonical codel,Brat 2015 NEJM,26061751,
+E030,EGFR_mRNA,gene,RTK_RAS_PI3K_pathway,pathway,tf_to_target,activates,IDHwt GBM,Drives proliferative signaling,Brennan 2013 Cell,24120142,
+E031,EGFRvIII_variant,gene,RTK_RAS_PI3K_pathway,pathway,tf_to_target,constitutively_activates,IDHwt GBM,Ligand-independent activation,Brennan 2013 Cell,24120142,
+E032,PDGFRA_mRNA,gene,RTK_RAS_PI3K_pathway,pathway,tf_to_target,activates,Proneural GBM,,Verhaak 2010 Cancer Cell,20129251,
+E033,MET_mRNA,gene,RTK_RAS_PI3K_pathway,pathway,tf_to_target,activates,GBM,,Brennan 2013 Cell,24120142,
+E034,PTEN,gene,PI3K_AKT_mTOR_pathway,pathway,mutation_to_pathway,disinhibits_aberrantly,IDHwt GBM (~30% mutated + Chr10 loss),Tumor suppressor loss-of-function,Brennan 2013 Cell,24120142,
+E035,PIK3CA,gene,PI3K_AKT_mTOR_pathway,pathway,mutation_to_pathway,activates,GBM (~10%),Hot-spot activating mutations p110alpha,Brennan 2013 Cell,24120142,
+E036,PIK3R1,gene,PI3K_AKT_mTOR_pathway,pathway,mutation_to_pathway,activates,GBM (~10%),Regulatory subunit mutations,Brennan 2013 Cell,24120142,
+E037,NF1,gene,MAPK_pathway,pathway,mutation_to_pathway,disinhibits_aberrantly,Mesenchymal GBM,NF1 loss enriched in Mesenchymal subtype,Verhaak 2010 Cancer Cell,20129251,RAS GTPase activator
+E038,BRAF,gene,MAPK_pathway,pathway,mutation_to_pathway,activates,pediatric LGG; rare adult,V600E activating mutation,Schindler 2011 Acta Neuropathol,21229346,Targetable with BRAF inhibitors
+E039,KRAS,gene,MAPK_pathway,pathway,mutation_to_pathway,activates,rare adult glioma,Hot-spot activating mutations,Brennan 2013 Cell,24120142,
+E040,RTK_RAS_PI3K_pathway,pathway,Proliferation_phenotype,phenotype,pathway_to_phenotype,promotes,IDHwt GBM,Drives high-grade behavior,Brennan 2013 Cell,24120142,Core oncogenic axis
+E041,PI3K_AKT_mTOR_pathway,pathway,Proliferation_phenotype,phenotype,pathway_to_phenotype,promotes,both,,Brennan 2013 Cell,24120142,
+E042,MAPK_pathway,pathway,Proliferation_phenotype,phenotype,pathway_to_phenotype,promotes,Mesenchymal GBM,,Verhaak 2010 Cancer Cell,20129251,
+E043,PI3K_AKT_mTOR_pathway,pathway,Apoptosis_pathway,pathway,pathway_to_pathway,inhibits,both,AKT phosphorylates BAD/BIM to block apoptosis,Brennan 2013 Cell,24120142,
+E044,TP53,gene,p53_pathway,pathway,mutation_to_pathway,inactivates,both (~30%),Loss-of-function in DNA-binding domain,TCGA glioma 2015 NEJM,26061751,
+E045,MDM2_mRNA,gene,p53_pathway,pathway,tf_to_target,inactivates,IDHwt GBM,Upregulation degrades p53,Brennan 2013 Cell,24120142,
+E046,MDM4_mRNA,gene,p53_pathway,pathway,tf_to_target,inactivates,IDHwt GBM,Parallel to MDM2,Brennan 2013 Cell,24120142,
+E047,PPM1D,gene,p53_pathway,pathway,mutation_to_pathway,inactivates,brainstem glioma,Negative regulator of p53,Zhang 2014 Nat Genet,24880341,
+E048,CDKN2A_p14ARF,gene,p53_pathway,pathway,cnv_to_rna,inactivates,IDHwt GBM,p14ARF inhibits MDM2; CDKN2A loss removes brake,Brennan 2013 Cell,24120142,Same locus affects two pathways via separate transcripts
+E049,CDKN2A_p16INK4A,gene,RB1_pathway,pathway,cnv_to_rna,inactivates,IDHwt GBM; high-risk IDHmut,p16INK4A inhibits CDK4/6,Shirahata 2018 Acta Neuropathol,30143891,Now WHO 2021 high-grade IDHmut criterion
+E050,CDKN2B,gene,RB1_pathway,pathway,cnv_to_rna,inactivates,IDHwt GBM,Co-deleted with CDKN2A on Chr9p21,Brennan 2013 Cell,24120142,
+E051,RB1,gene,RB1_pathway,pathway,mutation_to_pathway,inactivates,GBM (~10%),Loss-of-function mutations,Brennan 2013 Cell,24120142,
+E052,CDK4_mRNA,gene,RB1_pathway,pathway,tf_to_target,inactivates,IDHwt GBM,Phosphorylates RB1,Brennan 2013 Cell,24120142,
+E053,CDK6_mRNA,gene,RB1_pathway,pathway,tf_to_target,inactivates,IDHwt GBM,,Brennan 2013 Cell,24120142,
+E054,RB1_pathway,pathway,Cell_cycle_phenotype,phenotype,pathway_to_phenotype,dysregulates,both,Loss of RB control drives proliferation,Brennan 2013 Cell,24120142,
+E055,p53_pathway,pathway,Genomic_instability_phenotype,phenotype,pathway_to_phenotype,promotes_when_inactivated,both,Loss of p53 enables aneuploidy / mutational burden,TCGA glioma 2015 NEJM,26061751,
+E056,p53_pathway,pathway,Apoptosis_pathway,pathway,pathway_to_pathway,activates_when_intact,both,p53 transactivates pro-apoptotic genes,Vogelstein 2000 Nature,11048727,
+E057,TERT_promoter,gene,TERT_mRNA,gene,mutation_to_rna,upregulates,IDHwt GBM (~80%) and IDHmut-codel (~95%),C228T and C250T promoter mutations,Killela 2013 PNAS,23530239,Create de novo ETS-family TF binding
+E058,TERT_mRNA,gene,Telomere_maintenance_pathway,pathway,tf_to_target,activates,both,Telomerase reactivation,Killela 2013 PNAS,23530239,
+E059,ATRX,gene,ALT_telomere_maintenance,pathway,mutation_to_pathway,activates_alternative,IDHmut-noncodel (~70%),ATRX loss-of-function mutations co-occur with TP53,Heaphy 2011 Science,21719641,Loss enables ALT
+E060,DAXX,gene,ALT_telomere_maintenance,pathway,mutation_to_pathway,activates_alternative,pancreatic NET more than glioma; rare,DAXX partners with ATRX,Heaphy 2011 Science,21719641,
+E061,Telomere_maintenance_pathway,pathway,Cell_cycle_phenotype,phenotype,pathway_to_phenotype,enables_immortalization,both,Required for indefinite division,Killela 2013 PNAS,23530239,
+E062,ALT_telomere_maintenance,pathway,Genomic_instability_phenotype,phenotype,pathway_to_phenotype,promotes,IDHmut-noncodel,ALT-positive tumors show high CIN,Heaphy 2011 Science,21719641,Links to Percent_aneuploidy variable
+E063,CIC,gene,Transcriptome_subtype,phenotype,mutation_to_phenotype,influences_oligo_program,IDHmut-codel,Mutations on remaining allele post 1p loss,Bettegowda 2011 Science,21817013,Drives oligodendroglial differentiation
+E064,FUBP1,gene,Transcriptome_subtype,phenotype,mutation_to_phenotype,influences_oligo_program,IDHmut-codel,,Bettegowda 2011 Science,21817013,
+E065,NOTCH1,gene,NOTCH_signaling_pathway,pathway,mutation_to_pathway,context_dependent,GBM (~5%),Tumor suppressor in some contexts; oncogene in others,Yuan 2010 Sci Signal,20570920,Context dependent in glioma
+E066,SETD2,gene,Chromatin_remodeling_pathway,pathway,mutation_to_pathway,inactivates,pediatric high-grade glioma,H3K36 methyltransferase loss,Sturm 2012 Cancer Cell,22980975,
+E067,SUZ12,gene,Polycomb_repressive_complex,pathway,mutation_to_pathway,inactivates,rare glioma,PRC2 component,Sturm 2012 Cancer Cell,22980975,
+E068,EZH2,gene,Polycomb_repressive_complex,pathway,tf_to_target,activates,glioma stem cells,H3K27 methyltransferase,Suva 2009 Cancer Res,19258506,
+E069,H3F3A_K27M,gene,Chromatin_remodeling_pathway,pathway,mutation_to_pathway,blocks_PRC2,pediatric DMG (rare adult),Histone H3K27M mutation,Sturm 2012 Cancer Cell,22980975,Defines DMG (formerly DIPG); WHO 2021 entity
+E070,H3F3A_G34,gene,Chromatin_remodeling_pathway,pathway,mutation_to_pathway,alters_H3K36me3_landscape,pediatric/young adult hemispheric,Histone H3G34R/V mutation,Sturm 2012 Cancer Cell,22980975,
+E071,miR-21,miRNA,PTEN_mRNA,gene,mirna_to_rna,downregulates,both (highly upregulated in glioma),Targets PTEN 3'UTR,Chan 2005 Cancer Res,15994929,Drives proliferation/anti-apoptosis
+E072,miR-21,miRNA,SPRY2_mRNA,gene,mirna_to_rna,downregulates,both,Additional target promoting RTK signaling,Chan 2005 Cancer Res,15994929,
+E073,miR-10b,miRNA,HOXD10_mRNA,gene,mirna_to_rna,downregulates,IDHwt GBM,Promotes invasion; absent in normal brain,Gabriely 2011 Cancer Res,21750178,
+E074,miR-128,miRNA,BMI1_mRNA,gene,mirna_to_rna,downregulates,glioma stem cells,Tumor suppressor miRNA; regulates self-renewal,Godlewski 2008 Cancer Res,18922887,
+E075,miR-181a,miRNA,BCL2_mRNA,gene,mirna_to_rna,downregulates,both,Tumor suppressor in glioma,Shi 2008 Brain Res,18164284,
+E076,miR-34a,miRNA,CDK6_mRNA,gene,mirna_to_rna,downregulates,both,p53-target miRNA; tumor suppressor,Li 2009 Cancer Res,19435942,Lost in many glioma samples
+E077,miR-7,miRNA,EGFR_mRNA,gene,mirna_to_rna,downregulates,both,Direct EGFR regulation,Webster 2009 J Biol Chem,19318319,Loss contributes to EGFR overexpression
+E078,miR-26a,miRNA,PTEN_mRNA,gene,mirna_to_rna,downregulates,GBM,Frequently amplified locus,Huse 2009 Genes Dev,19451218,
+E079,MYC,TF,Cell_cycle_genes,gene,tf_to_target,upregulates,Proneural GBM,Activated downstream of MAPK/PI3K,Verhaak 2010 Cancer Cell,20129251,
+E080,HIF1A,TF,Angiogenesis_pathway,pathway,tf_to_target,activates,IDHwt GBM,Hypoxia response; pseudo-palisading necrosis,Brennan 2013 Cell,24120142,Drives VEGFA expression
+E081,HIF1A,TF,VEGFA_mRNA,gene,tf_to_target,activates,IDHwt GBM,Direct transcriptional target,Brennan 2013 Cell,24120142,
+E082,STAT3,TF,Mesenchymal_transcription_program,pathway,tf_to_target,activates,Mesenchymal GBM,Master regulator,Carro 2010 Nature,20032975,
+E083,CEBPB,TF,Mesenchymal_transcription_program,pathway,tf_to_target,activates,Mesenchymal GBM,Co-master regulator with STAT3,Carro 2010 Nature,20032975,
+E084,NFKB,TF,Mesenchymal_transcription_program,pathway,tf_to_target,activates,Mesenchymal GBM,Activated downstream of NF1 loss / TNF,Bhat 2013 Cancer Cell,23993863,
+E085,SOX2,TF,Stemness_pathway,pathway,tf_to_target,activates,glioma stem cells,Maintains undifferentiated state,Suva 2014 Cell,24561514,
+E086,OLIG2,TF,Proneural_transcription_program,pathway,tf_to_target,activates,Proneural GBM and IDHmut LGG,Defines proneural lineage,Ligon 2004 Neuron,15003170,
+E087,ASCL1,TF,Proneural_transcription_program,pathway,tf_to_target,activates,Proneural GBM,Neural lineage TF,Park 2017 Genes Dev,28931760,
+E088,FOXM1,TF,Cell_cycle_genes,gene,tf_to_target,activates,both,Master proliferation TF,Wierstra 2007 Adv Cancer Res,17613303,Upregulated in high-grade glioma
+E089,YAP1,TF,Hippo_signaling_target_genes,pathway,tf_to_target,activates,GBM stem cells,Stem cell maintenance,Bhat 2011 Genes Dev,21701053,
+E090,Mesenchymal_transcription_program,pathway,ESTIMATE_immune_score,phenotype,pathway_to_phenotype,increases,Mesenchymal GBM,Mesenchymal GBM has highest immune infiltration,Wang 2017 Cancer Cell,28697342,
+E091,Mesenchymal_transcription_program,pathway,ESTIMATE_stromal_score,phenotype,pathway_to_phenotype,increases,Mesenchymal GBM,,Wang 2017 Cancer Cell,28697342,
+E092,Proneural_transcription_program,pathway,Transcriptome_subtype,phenotype,pathway_to_phenotype,defines_PN_subtype,both,,Verhaak 2010 Cancer Cell,20129251,
+E093,Mesenchymal_transcription_program,pathway,Transcriptome_subtype,phenotype,pathway_to_phenotype,defines_MES_subtype,GBM,,Verhaak 2010 Cancer Cell,20129251,
+E094,Genomic_instability_phenotype,phenotype,Neoplasm_histologic_grade,phenotype,phenotype_to_phenotype,increases,both,Higher mutation/aneuploidy ~ higher grade,TCGA glioma 2015 NEJM,26061751,
+E095,Proliferation_phenotype,phenotype,Neoplasm_histologic_grade,phenotype,phenotype_to_phenotype,increases,both,High proliferation defines high grade,WHO 2021,34185076,
+E096,Apoptosis_pathway,phenotype,Cell_cycle_phenotype,phenotype,phenotype_to_phenotype,inhibits_growth_when_intact,both,Apoptosis evasion enables uncontrolled growth,Hanahan 2011 Cell,21376230,
+E097,Angiogenesis_pathway,pathway,ESTIMATE_stromal_score,phenotype,pathway_to_phenotype,influences,GBM,VEGFA drives vascular stromal compartment,Brennan 2013 Cell,24120142,
+E098,Chromatin_remodeling_pathway,pathway,Transcriptome_subtype,phenotype,pathway_to_phenotype,influences,pediatric and rare adult,H3K27M/G34 mutations define DMG/hemispheric subtypes,Sturm 2012 Cancer Cell,22980975,
+E099,IDH_2HG_metabolism,pathway,DNA_damage_repair,pathway,pathway_to_pathway,impairs_homologous_recombination,both (IDHmut),2-HG sensitizes IDHmut tumors to HR-deficient agents,Sulkowski 2017 Sci Transl Med,28615356,Therapeutic implication
+E100,RTK_RAS_PI3K_pathway,pathway,Mesenchymal_transcription_program,pathway,pathway_to_pathway,activates_cross_talk,IDHwt GBM,NF1 loss + EGFR activation converges on MES program,Bhat 2013 Cancer Cell,23993863,Cross-pathway integration
+E101,NOTCH_signaling_pathway,pathway,Stemness_pathway,pathway,pathway_to_pathway,activates,glioma stem cells,NOTCH maintains stem-like state,Yuan 2010 Sci Signal,20570920,
+E102,Hippo_signaling_target_genes,pathway,Proliferation_phenotype,phenotype,pathway_to_phenotype,promotes,GBM,YAP/TAZ activation drives growth,Bhat 2011 Genes Dev,21701053,
+E103,Polycomb_repressive_complex,pathway,Cell_cycle_genes,gene,tf_to_target,represses_lineage_genes,glioma stem cells,H3K27me3 silencing of differentiation,Suva 2009 Cancer Res,19258506,
+E104,VEGFA_mRNA,gene,Angiogenesis_pathway,pathway,tf_to_target,activates,GBM,Master angiogenic factor,Brennan 2013 Cell,24120142,
